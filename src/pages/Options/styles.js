@@ -4,19 +4,25 @@ import {StyleSheet} from 'react-native';
 export default StyleSheet.create({
   container: {
     flex: 1,
-    padding: 20,
     backgroundColor: '#22212c',
     alignItems: 'center',
   },
-  botao:{
+  botaoSapataQuadrada:{
     backgroundColor: 'white',
-    borderWidth: 0.9,
-    borderColor: 'black',
     height: 120,
     width: 200,
     borderRadius: 5,
     margin: 5,
     alignItems: 'center',
+  },
+  botaoSapataRetangular:{
+    backgroundColor: 'white',
+    height: 120,
+    width: 200,
+    borderRadius: 5,
+    margin: 5,
+    alignItems: 'center',
+    marginTop: 20,
   },
   textbutton:{
     fontWeight: 'bold',

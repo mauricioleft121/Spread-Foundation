@@ -18,13 +18,13 @@ import styles from './styles';
 import Icon from 'react-native-vector-icons/AntDesign';
 import Info from 'react-native-vector-icons/Octicons';
 import { Aprox } from '../functions';
-import { SapataQuadradaPT } from '../Strings';
+import { SapataRetangularPT } from '../Strings';
 
 Info.loadFont();
 Icon.loadFont();
 
 
-const SapataQuadrada = () => {
+const SapataRetangular = () => {
 
   const [NSPT, setNSPT] = useState(5);
   const [CPilar, setCPilar] = useState('');
@@ -33,7 +33,10 @@ const SapataQuadrada = () => {
   const [TAdmT, setTAdmT] = useState(0);
   const [TAdmM, setTAdmM] = useState(0);
   const [MediaM, setMediaM] = useState(0);
-  const [LadoL, setLadoL] = useState(0);
+  const [LadoL, setLadoL] = useState('');
+  const [LadoB, setLadoB] = useState('');
+  const [DimL, setDimL] = useState(0);
+  const [DimB, setDimB] = useState(0);
   const [Recalque, setRecalque] = useState(0);
   const [Ttrab, setTtrab] = useState(0);
   const [InformationVisible, setInformationVisible] = useState(false);
@@ -46,51 +49,41 @@ const SapataQuadrada = () => {
     var Media = ((AdmT + parseFloat(AdmM)) / 2);
     Area = (CPilar / Media) * VCPS;
 
-    Lado = Math.sqrt(Area);
-    if (Lado < 0.6) {
-      Lado = 0.6;
-    }
-    Lado = Lado.toFixed(2);
-    if ((Lado * 100) % 5 === 0) {
+    var MenorLado = LadoB;
+    var MaiorLado = LadoL;
+
+    var MenorDim = ((MenorLado - MaiorLado)/2) + (Math.sqrt(Area + (0.25*Math.pow((MaiorLado - MenorLado),2))));
+    MenorDim = await Aprox(MenorDim);
+    var MaiorDim = (Area/MenorDim);
+    MaiorDim = await Aprox(MaiorDim);
+
+    Area = MenorDim * MaiorDim;
+
       TAdmSolo = CPilar / Area / 1000;
       TAdmSolo = TAdmSolo.toFixed(3);
+
       Recalq =
         27 *
         TAdmSolo *
-        (Math.pow(Lado, 0.7) / NSPT);
+        (Math.pow(MenorDim, 0.7) / NSPT);
       Recalq = Recalq.toFixed(2);
+
       setTAdmT(AdmT);
       setTAdmM(AdmM);
       setMediaM(Media);
-      setLadoL(Lado);
       setRecalque(Recalq);
       setTtrab(TAdmSolo);
-    }
-    else if ((Lado * 100) % 5 !== 0) {
-      Lado = Aprox(Lado);
-      Area = (Lado * Lado);
-      TAdmSolo = CPilar / Area / 1000;
-      TAdmSolo = TAdmSolo.toFixed(3);
-      Recalq =
-        27 *
-        TAdmSolo *
-        (Math.pow(Lado, 0.7) / NSPT);
-      Recalq = Recalq.toFixed(2);
-      setTAdmT(AdmT);
-      setTAdmM(AdmM);
-      setMediaM(Media);
-      setLadoL(Lado);
-      setRecalque(Recalq);
-      setTtrab(TAdmSolo);
-    }
+      setDimL(MaiorDim);
+      setDimB(MenorDim);
+    
     setModalVisible(true);
   }
 
   return (
     <View style={styles.container}>
       <Image
-      source={require('../../assets/sapataquadrada/sapataquadrada.png')}/>
-      <Text style={styles.textlocation1}>{SapataQuadradaPT.Pag1}</Text>
+      source={require('../../assets/sapataretangular/sapataretangular.png')}/>
+      <Text style={styles.textlocation1}>{SapataRetangularPT.Pag1}</Text>
       <TextInput
         style={styles.textinput}
         placeholder={'Insira o valor da carga do pilar'}
@@ -98,7 +91,23 @@ const SapataQuadrada = () => {
         value={CPilar}
         onChangeText={(text) => setCPilar(text)}
       />
-      <Text style={styles.textlocation}>{SapataQuadradaPT.Pag2}</Text>
+      <Text style={styles.textlocation2}>{SapataRetangularPT.Pag5}</Text>
+      <TextInput
+        style={styles.textinput}
+        placeholder={'Insira o valor do menor lado do pilar'}
+        keyboardType="number-pad"
+        value={LadoB}
+        onChangeText={(text) => setLadoB(text)}
+      />
+      <Text style={styles.textlocation2}>{SapataRetangularPT.Pag6}</Text>
+      <TextInput
+        style={styles.textinput}
+        placeholder={'Insira o valor do maior lado do pilar'}
+        keyboardType="number-pad"
+        value={LadoL}
+        onChangeText={(text) => setLadoL(text)}
+      />
+      <Text style={styles.textlocation}>{SapataRetangularPT.Pag2}</Text>
       <View style={styles.viewpicker}>
         <Picker
           selectedValue={NSPT}
@@ -122,7 +131,7 @@ const SapataQuadrada = () => {
           <Picker.Item label="20" value="20" />
         </Picker>
       </View>
-      <Text style={styles.textlocation}>{SapataQuadradaPT.Pag3}</Text>
+      <Text style={styles.textlocation}>{SapataRetangularPT.Pag3}</Text>
       <View style={styles.viewpicker}>
         <Picker
           selectedValue={VCPS}
@@ -141,15 +150,21 @@ const SapataQuadrada = () => {
           style={styles.botaocalcular}
           onPress={CalculoSapata}
         >
-          <Text style={styles.textobotaocalcular}>{SapataQuadradaPT.Pag4}</Text>
+          <Text style={styles.textobotaocalcular}>{SapataRetangularPT.Pag4}</Text>
         </TouchableOpacity>
         <TouchableOpacity style={styles.botaoinfo}
-        onPress={() => {setInformationVisible(!InformationVisible)}}>
+        onPress={() => {setInformationVisible(!InformationVisible);}}>
           <Info name="info" size={30} color="white" />
         </TouchableOpacity>
       </View>
 
-      <Modal
+      {modalVisible ? <BlurView
+        style={styles.absolute}
+        blurType="light"
+        blurAmount={5}
+      /> : null}
+
+        <Modal
           animationType="slide"
           transparent={true}
         
@@ -157,20 +172,20 @@ const SapataQuadrada = () => {
           <View style={styles.centeredView}>
             <View style={styles.modalViewInfo}>
               <View style={styles.viewInfo}>
-                <Text style={styles.textInfo}>{SapataQuadradaPT.Info2}</Text>
-                <Text style={styles.textInfo2}>{SapataQuadradaPT.Info3}</Text>
+                <Text style={styles.textInfo}>{SapataRetangularPT.Info2}</Text>
+                <Text style={styles.textInfo2}>{SapataRetangularPT.Info3}</Text>
                 <Image
                 source={require('../../assets/info/info1.png')}
                 style={{width: 280, height: 90, resizeMode: 'contain'}}/>
-               <Text style={styles.textInfo3}>{SapataQuadradaPT.Info4}</Text>
-               <Text style={styles.textInfo4}>{SapataQuadradaPT.Info5}</Text>
+               <Text style={styles.textInfo3}>{SapataRetangularPT.Info4}</Text>
+               <Text style={styles.textInfo4}>{SapataRetangularPT.Info5}</Text>
                <Image
                 source={require('../../assets/info/info2.png')}
                 style={{width: 280, height: 70, resizeMode: 'contain'}}/>
-              <Text style={styles.textInfo3}>{SapataQuadradaPT.Info6}</Text>
-              <Text style={styles.textInfo3}>{SapataQuadradaPT.Info7}</Text>
-              <Text style={styles.textInfo5}>{SapataQuadradaPT.Info8}</Text>
-              <Text style={styles.textInfo5}>{SapataQuadradaPT.Info9}</Text>
+              <Text style={styles.textInfo3}>{SapataRetangularPT.Info6}</Text>
+              <Text style={styles.textInfo3}>{SapataRetangularPT.Info7}</Text>
+              <Text style={styles.textInfo5}>{SapataRetangularPT.Info8}</Text>
+              <Text style={styles.textInfo5}>{SapataRetangularPT.Info9}</Text>
               </View>
               <View style={{ flexDirection: 'row', paddingTop: 15, justifyContent: 'center', marginBottom: 20 }}>
                 <TouchableOpacity
@@ -185,13 +200,7 @@ const SapataQuadrada = () => {
           </View>
         </Modal>
 
-      {modalVisible ? <BlurView
-        style={styles.absolute}
-        blurType="light"
-        blurAmount={5}
-      /> : null}
-
-      {CPilar === '' ?
+      {CPilar === '' || LadoL === '' || LadoB === '' ?
         <Modal
           animationType="slide"
           transparent={true}
@@ -200,15 +209,15 @@ const SapataQuadrada = () => {
           <View style={styles.centeredView}>
             <View style={styles.modalViewErro}>
               <View style={{ alignItems: 'center' }}>
-                <Text style={styles.resultado}>{SapataQuadradaPT.ModalErro1}</Text>
+                <Text style={styles.resultado}>{SapataRetangularPT.ModalErro1}</Text>
               </View>
               <View style={styles.viewerro}>
-                <Text style={styles.erro}>{SapataQuadradaPT.ModalErro2}
+                <Text style={styles.erro}>{SapataRetangularPT.ModalErro2}
                 </Text>
               </View>
               <View style={{ flexDirection: 'row', paddingTop: 50, justifyContent: 'center', marginBottom: 20 }}>
                 <TouchableOpacity
-                  style={{ backgroundColor: 'black', borderRadius: 30, width: 40, height: 40, justifyContent: 'center', alignItems: 'center' }}
+                  style={{ backgroundColor: '#ff5555', borderRadius: 30, width: 40, height: 40, justifyContent: 'center', alignItems: 'center' }}
                   onPress={() => {
                     setModalVisible(!modalVisible);
                   }}>
@@ -228,11 +237,11 @@ const SapataQuadrada = () => {
 
               <View>
                 <View style={{ alignItems: 'center' }}>
-                  <Text style={styles.resultado}>{SapataQuadradaPT.Modal1}</Text>
+                  <Text style={styles.resultado}>{SapataRetangularPT.Modal1}</Text>
                 </View>
 
                 <View>
-                <Text style={styles.resultado3}>{SapataQuadradaPT.Modal2}</Text>
+                <Text style={styles.resultado3}>{SapataRetangularPT.Modal2}</Text>
                 <View style={{flexDirection:'row', alignItems: 'center'}}>
                 <Text style={{fontWeight:'bold', bottom: 6, fontSize:30,color:'white'}}>• </Text>
                 <Text style={styles.resultado2}>Quadrada</Text>
@@ -240,50 +249,58 @@ const SapataQuadrada = () => {
                 </View>
 
                 <View>
-                <Text style={styles.resultado3}>{SapataQuadradaPT.Modal3}</Text>
+                <Text style={styles.resultado3}>{SapataRetangularPT.Modal3}</Text>
                 <View style={{flexDirection:'row', alignItems: 'center'}}>
                 <Text style={{fontWeight:'bold', bottom: 6, fontSize:30,color:'white'}}>• </Text>
-                <Text style={styles.resultado2}>{TAdmM + SapataQuadradaPT.ModalKPA}</Text>
+                <Text style={styles.resultado2}>{TAdmM + SapataRetangularPT.ModalKPA}</Text>
                 </View>
                 </View>
 
                 <View>
-                <Text style={styles.resultado3}>{SapataQuadradaPT.Modal4}</Text>
+                <Text style={styles.resultado3}>{SapataRetangularPT.Modal4}</Text>
                 <View style={{flexDirection:'row', alignItems: 'center'}}>
                 <Text style={{fontWeight:'bold', bottom: 6, fontSize:30,color:'white'}}>• </Text>
-                <Text style={styles.resultado2}>{TAdmM + SapataQuadradaPT.ModalKPA}</Text>
+                <Text style={styles.resultado2}>{TAdmM + SapataRetangularPT.ModalKPA}</Text>
                 </View>
                 </View>
 
                 <View>
-                <Text style={styles.resultado3}>{SapataQuadradaPT.Modal5}</Text> 
+                <Text style={styles.resultado3}>{SapataRetangularPT.Modal5}</Text> 
                 <View style={{flexDirection:'row', alignItems: 'center'}}>
                 <Text style={{fontWeight:'bold', bottom: 6, fontSize:30,color:'white'}}>• </Text>
-                <Text style={styles.resultado2}>{MediaM + SapataQuadradaPT.ModalKPA}</Text>
+                <Text style={styles.resultado2}>{MediaM + SapataRetangularPT.ModalKPA}</Text>
                 </View>
                 </View>
 
                 <View>
-                <Text style={styles.resultado3}>{SapataQuadradaPT.Modal6 }</Text>
+                <Text style={styles.resultado3}>{SapataRetangularPT.Modal6 }</Text>
                 <View style={{flexDirection:'row', alignItems: 'center'}}>
                 <Text style={{fontWeight:'bold', bottom: 6, fontSize:30,color:'white'}}>• </Text>
-                <Text style={styles.resultado2}>{Ttrab + SapataQuadradaPT.ModalMPA}</Text>
+                <Text style={styles.resultado2}>{Ttrab + SapataRetangularPT.ModalMPA}</Text>
                 </View>
                 </View>
 
                 <View>
-                <Text style={styles.resultado3}>{SapataQuadradaPT.Modal7}</Text>
+                <Text style={styles.resultado3}>{SapataRetangularPT.Modal7 }</Text>
                 <View style={{flexDirection:'row', alignItems: 'center'}}>
                 <Text style={{fontWeight:'bold', bottom: 6, fontSize:30,color:'white'}}>• </Text>
-                <Text style={styles.resultado2}>{LadoL + SapataQuadradaPT.ModalM}</Text>
+                <Text style={styles.resultado2}>{DimB + SapataRetangularPT.ModalM}</Text>
                 </View>
                 </View>
 
                 <View>
-                <Text style={styles.resultado3}>{SapataQuadradaPT.Modal8 }</Text>
+                <Text style={styles.resultado3}>{SapataRetangularPT.Modal8 }</Text>
                 <View style={{flexDirection:'row', alignItems: 'center'}}>
                 <Text style={{fontWeight:'bold', bottom: 6, fontSize:30,color:'white'}}>• </Text>
-                <Text style={styles.resultado2}>{Recalque + SapataQuadradaPT.ModalCm}</Text>
+                <Text style={styles.resultado2}>{DimL + SapataRetangularPT.ModalM}</Text>
+                </View>
+                </View>
+
+                <View>
+                <Text style={styles.resultado3}>{SapataRetangularPT.Modal9 }</Text>
+                <View style={{flexDirection:'row', alignItems: 'center'}}>
+                <Text style={{fontWeight:'bold', bottom: 6, fontSize:30,color:'white'}}>• </Text>
+                <Text style={styles.resultado2}>{Recalque + SapataRetangularPT.ModalCm}</Text>
                 </View>
                 
                   </View>
@@ -307,4 +324,4 @@ const SapataQuadrada = () => {
     </View>
   );
 };
-export default SapataQuadrada;
+export default SapataRetangular;

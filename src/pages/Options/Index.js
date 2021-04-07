@@ -9,16 +9,28 @@ const Options = ({ navigation }) => {
   return (
     <>
     <View style={styles.container}>
-    <Text style={{color:'white',fontSize:20,marginBottom:50}}>OPÇÕES</Text>
+      <Image
+      source={require('../../assets/sapata/sapata.png')}
+      style={{marginBottom:50}}/>
     <TouchableOpacity
       onPress={() => navigation.navigate('SapataQuadrada')}
-      style={styles.botao}
+      style={styles.botaoSapataQuadrada}
       >
       <Image
       source={require('../../assets/botaosapataquadrada/sapataquadrada.png')}
       style={styles.ImageIconStyle}
      />
       <Text style={styles.textbutton}>Sapata Quadrada</Text>
+      </TouchableOpacity>
+      <TouchableOpacity
+      onPress={() => navigation.navigate('SapataRetangular')}
+      style={styles.botaoSapataRetangular}
+      >
+      <Image
+      source={require('../../assets/botaosapataretangular/sapataretangular.png')}
+      style={styles.ImageIconStyle}
+     />
+      <Text style={styles.textbutton}>Sapata Retangular</Text>
       </TouchableOpacity>
     </View>
 

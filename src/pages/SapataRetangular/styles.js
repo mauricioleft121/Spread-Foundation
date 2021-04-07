@@ -52,14 +52,21 @@ export default StyleSheet.create({
     fontSize: 18
   },
   textlocation:{
-    paddingTop: 30,
+    paddingTop: 20,
     paddingBottom: 10,
     color:'white',
     fontFamily: 'DarkerGrotesque-Bold',
     fontSize: 18
   },
   textlocation1:{
-    paddingTop: 70,
+    paddingTop: 40,
+    paddingBottom: 10,
+    color:'white',
+    fontFamily: 'DarkerGrotesque-Bold',
+    fontSize: 18
+  },
+  textlocation2:{
+    paddingTop: 20,
     paddingBottom: 10,
     color:'white',
     fontFamily: 'DarkerGrotesque-Bold',
@@ -108,7 +115,7 @@ export default StyleSheet.create({
     shadowRadius: 4,
     borderWidth: 10,
     borderColor: '#ff5555',
-    height: hp(83),
+    height: hp(93),
     width: wp(80)
   },
 
@@ -172,15 +179,18 @@ export default StyleSheet.create({
   erro:{
     fontSize:hp(2.9),
     fontFamily:'DarkerGrotesque-Medium',
+    color: 'white'
   },
   modalViewErro: {
     flex: 0,
     margin: 20,
-    backgroundColor: 'snow',
+    backgroundColor: '#22212c',
     borderRadius: 20,
     paddingLeft: 20,
     paddingRight:20,
      elevation: 5,
+     borderWidth: 10,
+     borderColor: '#ff5555',
   },
   resultado3:{
     fontSize:hp(2.4),
@@ -190,6 +200,10 @@ export default StyleSheet.create({
     borderRadius:20,
     textAlign:'center'
   },
+
+  textos:{
+  
+   },
    textInfo: {
     fontSize:hp(2.3),
     fontFamily:'DarkerGrotesque-Medium',

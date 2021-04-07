@@ -6,6 +6,7 @@ import { createStackNavigator } from '@react-navigation/stack';
 import HomeScreen from './pages/HomeScreen/Index'; //home
 import Options from './pages/Options/Index'; // opções
 import SapataQuadrada from './pages/SapataQuadrada/Index'; // SapataQuadrada
+import SapataRetangular from './pages/SapataRetangular/Index'; // Sapata Retangular
 
 const Stack = createStackNavigator();
 
@@ -51,6 +52,16 @@ function Routes(navigation) {
           <Stack.Screen
           name="SapataQuadrada"
           component={SapataQuadrada}
+          options={{
+            ...horizontalAnimation,
+            headerTransparent: true,
+            headerTitle: null,
+            headerTintColor:'white'
+          }}
+        />
+          <Stack.Screen
+          name="SapataRetangular"
+          component={SapataRetangular}
           options={{
             ...horizontalAnimation,
             headerTransparent: true,
