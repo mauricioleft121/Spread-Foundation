@@ -49,21 +49,21 @@ export default StyleSheet.create({
   textobotaocalcular:{
     color: 'snow',
     fontFamily: 'DarkerGrotesque-Bold',
-    fontSize: 18
+    fontSize: 18,
   },
   textlocation:{
     paddingTop: 30,
     paddingBottom: 10,
     color:'white',
     fontFamily: 'DarkerGrotesque-Bold',
-    fontSize: 18
+    fontSize: 18,
   },
   textlocation1:{
     paddingTop: 70,
     paddingBottom: 10,
     color:'white',
     fontFamily: 'DarkerGrotesque-Bold',
-    fontSize: 18
+    fontSize: 18,
   },
 
   backgroundImage: {
@@ -75,12 +75,12 @@ export default StyleSheet.create({
   button: {
     borderRadius: 20,
     padding: 10,
-    elevation: 2
+    elevation: 2,
   },
   textStyle: {
-    color: "white",
-    fontWeight: "bold",
-    textAlign: "center"
+    color: 'white',
+    fontWeight: 'bold',
+    textAlign: 'center',
   },
 
   ////////////////////////
@@ -99,17 +99,17 @@ export default StyleSheet.create({
     paddingLeft: 20,
     paddingRight:20,
      elevation: 5,
-     shadowColor: "#000",
+     shadowColor: '#000',
     shadowOffset: {
       width: 0,
-      height: 2
+      height: 2,
     },
     shadowOpacity: 0.25,
     shadowRadius: 4,
     borderWidth: 10,
     borderColor: '#ff5555',
     height: hp(83),
-    width: wp(80)
+    width: wp(80),
   },
 
   modalText: {
@@ -146,8 +146,8 @@ export default StyleSheet.create({
   },
 
   texto:{
-    flexDirection:'row', 
-    justifyContent:'space-between'
+    flexDirection:'row',
+    justifyContent:'space-between',
   },
   //////////////////////////
   resultado:{
@@ -172,15 +172,18 @@ export default StyleSheet.create({
   erro:{
     fontSize:hp(2.9),
     fontFamily:'DarkerGrotesque-Medium',
+    color: 'white',
   },
   modalViewErro: {
     flex: 0,
     margin: 20,
-    backgroundColor: 'snow',
+    backgroundColor: '#22212c',
     borderRadius: 20,
     paddingLeft: 20,
     paddingRight:20,
      elevation: 5,
+     borderWidth: 10,
+     borderColor: '#ff5555',
   },
   resultado3:{
     fontSize:hp(2.4),
@@ -188,7 +191,7 @@ export default StyleSheet.create({
    color:'white',
     backgroundColor: '#ff5555',
     borderRadius:20,
-    textAlign:'center'
+    textAlign:'center',
   },
    textInfo: {
     fontSize:hp(2.3),
@@ -202,7 +205,7 @@ export default StyleSheet.create({
     fontFamily:'DarkerGrotesque-Medium',
     color: 'white',
     textAlign: 'justify',
-    paddingTop: 2
+    paddingTop: 2,
    },
    textInfo3: {
     fontSize:hp(2.15),
@@ -239,5 +242,5 @@ export default StyleSheet.create({
      elevation: 5,
      borderWidth: 10,
      borderColor: '#ff5555',
-   }
+   },
 });

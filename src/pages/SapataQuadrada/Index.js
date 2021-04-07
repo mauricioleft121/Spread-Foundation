@@ -9,7 +9,7 @@ import {
   TouchableOpacity,
   TextInput,
   Modal,
-  Image
+  Image,
 } from 'react-native';
 
 import { Picker } from '@react-native-picker/picker';
@@ -144,7 +144,7 @@ const SapataQuadrada = () => {
           <Text style={styles.textobotaocalcular}>{SapataQuadradaPT.Pag4}</Text>
         </TouchableOpacity>
         <TouchableOpacity style={styles.botaoinfo}
-        onPress={() => {setInformationVisible(!InformationVisible)}}>
+        onPress={() => {setInformationVisible(!InformationVisible);}}>
           <Info name="info" size={30} color="white" />
         </TouchableOpacity>
       </View>
@@ -152,7 +152,7 @@ const SapataQuadrada = () => {
       <Modal
           animationType="slide"
           transparent={true}
-        
+
           visible={InformationVisible}>
           <View style={styles.centeredView}>
             <View style={styles.modalViewInfo}>
@@ -195,7 +195,7 @@ const SapataQuadrada = () => {
         <Modal
           animationType="slide"
           transparent={true}
-        
+
           visible={modalVisible}>
           <View style={styles.centeredView}>
             <View style={styles.modalViewErro}>
@@ -208,7 +208,7 @@ const SapataQuadrada = () => {
               </View>
               <View style={{ flexDirection: 'row', paddingTop: 50, justifyContent: 'center', marginBottom: 20 }}>
                 <TouchableOpacity
-                  style={{ backgroundColor: 'black', borderRadius: 30, width: 40, height: 40, justifyContent: 'center', alignItems: 'center' }}
+                  style={{ backgroundColor: '#ff5555', borderRadius: 30, width: 40, height: 40, justifyContent: 'center', alignItems: 'center' }}
                   onPress={() => {
                     setModalVisible(!modalVisible);
                   }}>
@@ -256,7 +256,7 @@ const SapataQuadrada = () => {
                 </View>
 
                 <View>
-                <Text style={styles.resultado3}>{SapataQuadradaPT.Modal5}</Text> 
+                <Text style={styles.resultado3}>{SapataQuadradaPT.Modal5}</Text>
                 <View style={{flexDirection:'row', alignItems: 'center'}}>
                 <Text style={{fontWeight:'bold', bottom: 6, fontSize:30,color:'white'}}>• </Text>
                 <Text style={styles.resultado2}>{MediaM + SapataQuadradaPT.ModalKPA}</Text>
@@ -285,7 +285,7 @@ const SapataQuadrada = () => {
                 <Text style={{fontWeight:'bold', bottom: 6, fontSize:30,color:'white'}}>• </Text>
                 <Text style={styles.resultado2}>{Recalque + SapataQuadradaPT.ModalCm}</Text>
                 </View>
-                
+
                   </View>
               </View>
 
