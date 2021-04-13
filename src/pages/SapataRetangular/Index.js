@@ -9,7 +9,8 @@ import {
   TouchableOpacity,
   TextInput,
   Modal,
-  Image
+  Image,
+  ScrollView,
 } from 'react-native';
 
 import { Picker } from '@react-native-picker/picker';
@@ -43,7 +44,7 @@ const SapataRetangular = () => {
 
 
   async function CalculoSapata() {
-    var Area, Lado, TAdmSolo, Recalq;
+    var Area, TAdmSolo, Recalq;
     var AdmT = 20 * NSPT;
     var AdmM = (0.1 * (Math.sqrt(NSPT) - 1) * 1000).toFixed(2);
     var Media = ((AdmT + parseFloat(AdmM)) / 2);
@@ -52,9 +53,9 @@ const SapataRetangular = () => {
     var MenorLado = LadoB;
     var MaiorLado = LadoL;
 
-    var MenorDim = ((MenorLado - MaiorLado)/2) + (Math.sqrt(Area + (0.25*Math.pow((MaiorLado - MenorLado),2))));
+    var MenorDim = ((MenorLado - MaiorLado) / 2) + (Math.sqrt(Area + (0.25 * Math.pow((MaiorLado - MenorLado),2))));
     MenorDim = await Aprox(MenorDim);
-    var MaiorDim = (Area/MenorDim);
+    var MaiorDim = (Area / MenorDim);
     MaiorDim = await Aprox(MaiorDim);
 
     Area = MenorDim * MaiorDim;
@@ -75,7 +76,7 @@ const SapataRetangular = () => {
       setTtrab(TAdmSolo);
       setDimL(MaiorDim);
       setDimB(MenorDim);
-    
+
     setModalVisible(true);
   }
 
@@ -167,26 +168,43 @@ const SapataRetangular = () => {
         <Modal
           animationType="slide"
           transparent={true}
-        
+
           visible={InformationVisible}>
           <View style={styles.centeredView}>
             <View style={styles.modalViewInfo}>
-              <View style={styles.viewInfo}>
+
+              <ScrollView
+              style={{marginTop: 15}}
+              showsVerticalScrollIndicator={false}>
+                <View style={styles.viewInfo}>
+
                 <Text style={styles.textInfo}>{SapataRetangularPT.Info2}</Text>
                 <Text style={styles.textInfo2}>{SapataRetangularPT.Info3}</Text>
                 <Image
                 source={require('../../assets/info/info1.png')}
                 style={{width: 280, height: 90, resizeMode: 'contain'}}/>
                <Text style={styles.textInfo3}>{SapataRetangularPT.Info4}</Text>
-               <Text style={styles.textInfo4}>{SapataRetangularPT.Info5}</Text>
+               <Text style={styles.textInfo3}>{SapataRetangularPT.InfoEspaço}</Text>
+               <Image
+                source={require('../../assets/info/info3.png')}
+                style={{width: 280, height: 90, resizeMode: 'contain', right: 20, marginTop: 10,marginBottom: 10}}/>
+               <Text style={styles.textInfo2}>{SapataRetangularPT.Info5}</Text>
+               <Text style={styles.textInfo3}>{SapataRetangularPT.Info6}</Text>
+               <Text style={styles.textInfo3}>{SapataRetangularPT.InfoEspaço}</Text>
+               <Text style={styles.textInfo4}>{SapataRetangularPT.Info7}</Text>
                <Image
                 source={require('../../assets/info/info2.png')}
                 style={{width: 280, height: 70, resizeMode: 'contain'}}/>
-              <Text style={styles.textInfo3}>{SapataRetangularPT.Info6}</Text>
-              <Text style={styles.textInfo3}>{SapataRetangularPT.Info7}</Text>
-              <Text style={styles.textInfo5}>{SapataRetangularPT.Info8}</Text>
-              <Text style={styles.textInfo5}>{SapataRetangularPT.Info9}</Text>
+              <Text style={styles.textInfo3}>{SapataRetangularPT.Info8}</Text>
+              <Text style={styles.textInfo3}>{SapataRetangularPT.InfoEspaço}</Text>
+              <Text style={styles.textInfo3}>{SapataRetangularPT.Info9}</Text>
+              <Text style={styles.textInfo5}>{SapataRetangularPT.Info10}</Text>
+              <Text style={styles.textInfo5}>{SapataRetangularPT.Info11}</Text>
+
               </View>
+
+              </ScrollView>
+
               <View style={{ flexDirection: 'row', paddingTop: 15, justifyContent: 'center', marginBottom: 20 }}>
                 <TouchableOpacity
                   style={{ backgroundColor: '#ff5555', borderRadius: 30, width: 40, height: 40, justifyContent: 'center', alignItems: 'center' }}
@@ -204,7 +222,7 @@ const SapataRetangular = () => {
         <Modal
           animationType="slide"
           transparent={true}
-        
+
           visible={modalVisible}>
           <View style={styles.centeredView}>
             <View style={styles.modalViewErro}>
@@ -252,7 +270,7 @@ const SapataRetangular = () => {
                 <Text style={styles.resultado3}>{SapataRetangularPT.Modal3}</Text>
                 <View style={{flexDirection:'row', alignItems: 'center'}}>
                 <Text style={{fontWeight:'bold', bottom: 6, fontSize:30,color:'white'}}>• </Text>
-                <Text style={styles.resultado2}>{TAdmM + SapataRetangularPT.ModalKPA}</Text>
+                <Text style={styles.resultado2}>{TAdmT + SapataRetangularPT.ModalKPA}</Text>
                 </View>
                 </View>
 
@@ -265,7 +283,7 @@ const SapataRetangular = () => {
                 </View>
 
                 <View>
-                <Text style={styles.resultado3}>{SapataRetangularPT.Modal5}</Text> 
+                <Text style={styles.resultado3}>{SapataRetangularPT.Modal5}</Text>
                 <View style={{flexDirection:'row', alignItems: 'center'}}>
                 <Text style={{fontWeight:'bold', bottom: 6, fontSize:30,color:'white'}}>• </Text>
                 <Text style={styles.resultado2}>{MediaM + SapataRetangularPT.ModalKPA}</Text>
@@ -302,7 +320,7 @@ const SapataRetangular = () => {
                 <Text style={{fontWeight:'bold', bottom: 6, fontSize:30,color:'white'}}>• </Text>
                 <Text style={styles.resultado2}>{Recalque + SapataRetangularPT.ModalCm}</Text>
                 </View>
-                
+
                   </View>
               </View>
 

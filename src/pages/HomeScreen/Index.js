@@ -35,7 +35,7 @@ const HomeScreen = ({ navigation }) => {
 
       <View style={styles.viewbotao2}>
       <TouchableOpacity
-      onPress={() => navigation.navigate('Options')}
+      onPress={() => {}}
       style={styles.botaodimensionamento}
       >
      <Text style={styles.textbutton}>Futuro Botão</Text>
@@ -44,7 +44,7 @@ const HomeScreen = ({ navigation }) => {
 
       <View style={styles.viewbotao3}>
       <TouchableOpacity
-      onPress={() => navigation.navigate('Options')}
+      onPress={() => {}}
       style={styles.botaodimensionamento}
       >
      <Text style={styles.textbutton}>Futuro Botão</Text>

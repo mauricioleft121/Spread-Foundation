@@ -38,7 +38,6 @@ export default StyleSheet.create({
     borderRadius: 5,
     marginTop: 50,
     marginLeft: 30,
-
   },
   botaoinfo:{
     alignItems: 'center',
@@ -108,8 +107,8 @@ export default StyleSheet.create({
     shadowRadius: 4,
     borderWidth: 10,
     borderColor: '#ff5555',
-    height: hp(83),
-    width: wp(80),
+    height: hp(68),
+    width: wp(95),
   },
 
   modalText: {
@@ -197,7 +196,6 @@ export default StyleSheet.create({
     fontSize:hp(2.3),
     fontFamily:'DarkerGrotesque-Medium',
     color: 'white',
-    marginTop: 10,
     textAlign: 'justify',
    },
    textInfo2: {
@@ -243,4 +241,52 @@ export default StyleSheet.create({
      borderWidth: 10,
      borderColor: '#ff5555',
    },
+   modalViewTensoes:{
+    height: hp(80),
+    width: wp(96),
+    margin: 20,
+    backgroundColor: '#22212c',
+    borderRadius: 20,
+    paddingLeft: 20,
+    paddingRight:20,
+     elevation: 5,
+     borderWidth: 10,
+     borderColor: '#ff5555',
+   },
+   tensoes:{
+    paddingTop:10,
+    paddingBottom:10,
+    fontSize:hp(4),
+    fontFamily:'DarkerGrotesque-Bold',
+    color:'white',
+  },
+  metodos:{
+    paddingTop:10,
+    paddingBottom:10,
+    fontSize:hp(3),
+    fontFamily:'DarkerGrotesque-Bold',
+    color:'white',
+  },
+  checkboxtext:{
+    fontSize:hp(2.4),
+    fontFamily:'DarkerGrotesque-Bold',
+    color:'white',
+    textAlign:'center',
+  },
+  botaoprosseguir:{
+    alignItems: 'center',
+    justifyContent:'center',
+    backgroundColor: '#ff5555',
+    borderWidth: 0,
+    borderColor: 'white',
+    height: 50,
+    width: 180,
+    borderRadius: 5,
+  },
+  textoprosseguir:{
+    fontSize:hp(2.7),
+    fontFamily:'DarkerGrotesque-Bold',
+    color:'white',
+    textAlign:'center',
+  }
 });
