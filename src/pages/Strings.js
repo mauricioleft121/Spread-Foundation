@@ -9,6 +9,7 @@ export const SapataQuadradaPT = {
   /*Modal Erro*/
   ModalErro1: 'ERRO',
   ModalErro2: 'Falha ao calcular os valores, por favor insira um valor para a carga do pilar.',
+  ModalErro3: 'Falha ao calcular a media das tensões, por favor selecione alguma caixa.',
   //////////////////////////////////////////////////
   /*Tensões*/
   ModalTensões1: 'TENSÕES',
