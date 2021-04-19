@@ -150,11 +150,12 @@ export default StyleSheet.create({
   },
   //////////////////////////
   resultado:{
-    paddingTop:10,
-    paddingBottom:10,
+    paddingTop:0,
+    paddingBottom:30,
     fontSize:hp(4),
     fontFamily:'DarkerGrotesque-Bold',
     color:'white',
+    right: 10
   },
 
   resultado2:{
