@@ -59,6 +59,11 @@ export default StyleSheet.create({
   },
   textlocation1:{
     paddingTop: 70,
+    color:'white',
+    fontFamily: 'DarkerGrotesque-Bold',
+    fontSize: 18,
+  },
+  textlocation2:{
     paddingBottom: 10,
     color:'white',
     fontFamily: 'DarkerGrotesque-Bold',
@@ -107,7 +112,7 @@ export default StyleSheet.create({
     shadowRadius: 4,
     borderWidth: 10,
     borderColor: '#ff5555',
-    height: hp(68),
+    height: hp(71),
     width: wp(95),
   },
 
@@ -155,7 +160,7 @@ export default StyleSheet.create({
     fontSize:hp(4),
     fontFamily:'DarkerGrotesque-Bold',
     color:'white',
-    right: 10
+    right: 10,
   },
 
   resultado2:{
@@ -167,7 +172,10 @@ export default StyleSheet.create({
 
   viewerro:{
     flex: 0,
-    paddingTop: 30,
+    paddingTop: 10,
+  },
+  viewerro2:{
+    paddingTop: 40,
   },
   erro:{
     fontSize:hp(2.9),
@@ -175,7 +183,8 @@ export default StyleSheet.create({
     color: 'white',
   },
   modalViewErro: {
-    flex: 0,
+    width: wp(96),
+    height: hp(35),
     margin: 20,
     backgroundColor: '#22212c',
     borderRadius: 20,
@@ -184,6 +193,12 @@ export default StyleSheet.create({
      elevation: 5,
      borderWidth: 10,
      borderColor: '#ff5555',
+  },
+  ErroTitle:{
+    fontSize:hp(4),
+    fontFamily:'DarkerGrotesque-Bold',
+    color:'white',
+    right: 10,
   },
   resultado3:{
     fontSize:hp(2.4),
@@ -243,7 +258,7 @@ export default StyleSheet.create({
      borderColor: '#ff5555',
    },
    modalViewTensoes:{
-    height: hp(80),
+    height: hp(85),
     width: wp(96),
     margin: 20,
     backgroundColor: '#22212c',

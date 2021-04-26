@@ -5,18 +5,19 @@ export const SapataQuadradaPT = {
   Pag2: 'NSPT',
   Pag3: 'CONTABILIZAÇÃO DO PESO DA SAPATA',
   Pag4: 'CALCULAR',
+  Pag5: 'VALOR CARACTERÍSTICO',
   /////////////////////////////////////////////////
   /*Modal Erro*/
   ModalErro1: 'ERRO',
   ModalErro2: 'Falha ao calcular os valores, por favor insira um valor para a carga do pilar.',
-  ModalErro3: 'Falha ao calcular a media das tensões, por favor selecione alguma caixa.',
+  ModalErro3: 'Falha ao calcular a media das tensões, por favor selecione algum método.',
   //////////////////////////////////////////////////
   /*Tensões*/
   ModalTensões1: 'TENSÕES',
   ModalTensões2: 'MÉTODOS A SEREM UTILIZADOS',
-  ModalTensões3: 'Tensão admissível (Teixeira) Solos Argilosos',
-  ModalTensões4: 'Tensão admissível (Teixeira) Solos Arenosos',
-  ModalTensões5: 'Tensão admissível (Melo) Solos Naturais',
+  ModalTensões3: 'Tensão admissível (Teixeira)\nSolos Argilosos (1998)',
+  ModalTensões4: 'Tensão admissível (Teixeira)\nSolos Arenosos (1996)',
+  ModalTensões5: 'Tensão admissível (Melo)\nSolos Naturais (1975)',
   ModalTensões6: '(Teixeira) Solos Argilosos',
   ModalTensões7: '(Teixeira) Solos Arenosos',
   ModalTensões8: '(Melo) Solos Naturais',
@@ -27,7 +28,7 @@ export const SapataQuadradaPT = {
   Modal5: 'Media das Tensões',
   Modal6: 'Tensão de Trabalho',
   Modal7: 'Lado da sapata',
-  Modal8: 'Recalque',
+  Modal8: 'Recalque (Décourt - 1992)',
   ModalKPA: ' (kPa)',
   ModalCm: ' cm',
   ModalM: ' m',
