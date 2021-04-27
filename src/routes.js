@@ -66,7 +66,7 @@ function Routes(navigation) {
             ...horizontalAnimation,
             headerTransparent: true,
             headerTitle: null,
-            headerTintColor:'white'
+            headerTintColor:'white',
           }}
         />
       </Stack.Navigator>

@@ -1,5 +1,6 @@
 /* eslint-disable prettier/prettier */
 import {StyleSheet} from 'react-native';
+import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen';
 
 export default StyleSheet.create({
   container: {
@@ -7,32 +8,47 @@ export default StyleSheet.create({
     backgroundColor: '#22212c',
     alignItems: 'center',
   },
+
+  imagemsapata:{
+    marginTop: hp(2),
+    marginBottom: hp(6),
+  },
+
   botaoSapataQuadrada:{
-    backgroundColor: 'white',
-    height: 120,
-    width: 200,
-    borderRadius: 5,
-    margin: 5,
     alignItems: 'center',
-  },
-  botaoSapataRetangular:{
     backgroundColor: 'white',
-    height: 120,
-    width: 200,
+    borderWidth: 0.5,
+    borderColor: 'black',
+    height: hp(15),
+    width: wp(48),
     borderRadius: 5,
-    margin: 5,
-    alignItems: 'center',
-    marginTop: 20,
+    justifyContent:'center',
   },
-  textbutton:{
-    fontWeight: 'bold',
+
+  imagemnosbotoes: {
+    marginTop: hp(1),
+    height: hp(9),
+    width: wp(25),
+  },
+
+  textonosbotoes:{
+    marginTop: hp(1),
+    fontFamily: 'DarkerGrotesque-SemiBold',
+    fontSize: hp(2.5),
     color: 'black',
   },
-  ImageIconStyle: {
-    padding: 40,
-    margin: 5,
-    height: 25,
-    width: 25,
-    resizeMode: 'center',
+
+  botaoSapataRetangular:{
+    alignItems: 'center',
+    backgroundColor: 'white',
+    borderWidth: 0.5,
+    borderColor: 'black',
+    height: hp(15),
+    width: wp(48),
+    borderRadius: 5,
+    justifyContent:'center',
+    marginTop: hp(2.5),
   },
+
+
 });

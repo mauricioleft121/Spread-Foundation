@@ -1,56 +1,45 @@
 /* eslint-disable prettier/prettier */
 import {StyleSheet} from 'react-native';
+import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen';
 
 export default StyleSheet.create({
   container: {
     flex: 1,
-    padding: 20,
     backgroundColor: '#22212c',
     alignItems: 'center',
   },
-  slablogo:{
-    width: 320,
-    height:130,
-    marginBottom:70,
-    marginTop:20,
+
+  logo:{
+    width: wp(78),
+    height: hp(17),
+    marginTop:hp(5),
   },
-  ufsjlogo:{
-    position: 'absolute',
-    bottom: 30,
-    resizeMode: 'contain',
-  },
+
   botaodimensionamento:{
     alignItems: 'center',
     backgroundColor: 'white',
     borderWidth: 0.5,
     borderColor: 'black',
-    height: 120,
-    width: 200,
+    height: hp(15),
+    width: wp(48),
     borderRadius: 5,
-    margin: 5,
     justifyContent:'center',
+    marginTop: hp(5),
   },
-  textbutton:{
+
+  textobotaodimensionamento:{
     fontFamily: 'DarkerGrotesque-SemiBold',
-    fontSize: 17,
+    fontSize: hp(2.1),
   },
 
-  ImageIconStyle: {
-    height: 80,
-    width: 120,
-    margin: 5,
+  imagembotaodimensionamento: {
+    height: hp(10.4),
+    width: wp(30),
   },
 
-  viewbotaodimensionamento:{
+  ufsjlogo:{
+    position: 'absolute',
+    bottom: hp(3.7),
+    resizeMode: 'contain',
   },
-
-  viewbotao2:{
-    paddingTop: 10,
-  },
-
-  viewbotao3:{
-    paddingTop: 10,
-  },
-
-
 });

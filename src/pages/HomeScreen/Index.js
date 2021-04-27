@@ -2,7 +2,7 @@
 import 'react-native-gesture-handler';
 import React from 'react';
 import {
-  View, Text, TouchableOpacity,Image,
+  View, Text, TouchableOpacity, Image,
 } from 'react-native';
 
 import styles from './styles';
@@ -10,58 +10,46 @@ import styles from './styles';
 const HomeScreen = ({ navigation }) => {
   return (
     <>
-    
-  
-    <View
-      style={styles.container}>
-      <Image
-      style={styles.slablogo}
-      source={require('../../assets/logoinicial/logoinicial.png')}
-      />
+      <View  style={styles.container}>
 
-
-      <View style={styles.viewbotaodimensionamento}>
-      <TouchableOpacity
-      onPress={() => navigation.navigate('Options')}
-      style={styles.botaodimensionamento}
-      >
+        {/* LOGO PRINCIPAL*/}
         <Image
-      source={require('../../assets/dimensionamento/dimensionamento.png')}
-      style={styles.ImageIconStyle}
-     />
-     <Text style={styles.textbutton}>Dimensionamento</Text>
-      </TouchableOpacity>
+          style={styles.logo}
+          source={require('../../assets/logoinicial/logoinicial.png')} />
+
+        {/* BOTÃO DIMENSIONAMENTO*/}
+        <View>
+          <TouchableOpacity
+            onPress={() => navigation.navigate('Options')}
+            style={styles.botaodimensionamento} >
+            <Image
+              source={require('../../assets/dimensionamento/dimensionamento.png')}
+              style={styles.imagembotaodimensionamento}
+            />
+            <Text style={styles.textobotaodimensionamento}>Dimensionamento</Text>
+          </TouchableOpacity>
+        </View>
+
+        {/* BOTÃO 2
+        <View style={styles}>
+          <TouchableOpacity
+            onPress={() => { }}
+            style={styles.botaodimensionamento}
+          >
+            <Text style={styles.textbutton}>Futuro Botão</Text>
+          </TouchableOpacity>
+        </View>
+      */}
+
+        {/* LOGO UFSJ*/}
+        <Image
+          style={styles.ufsjlogo}
+          source={require('../../assets/ufsjlogo/ufsjlogo.png')}
+        />
+
       </View>
-
-      <View style={styles.viewbotao2}>
-      <TouchableOpacity
-      onPress={() => {}}
-      style={styles.botaodimensionamento}
-      >
-     <Text style={styles.textbutton}>Futuro Botão</Text>
-      </TouchableOpacity>
-      </View>
-
-      <View style={styles.viewbotao3}>
-      <TouchableOpacity
-      onPress={() => {}}
-      style={styles.botaodimensionamento}
-      >
-     <Text style={styles.textbutton}>Futuro Botão</Text>
-      </TouchableOpacity>
-      </View>
-
-      <Image
-      style={styles.ufsjlogo}
-      source={require('../../assets/ufsjlogo/ufsjlogo.png')}
-      />
-
-
-    </View>
     </>
   );
-
 };
-
 
 export default HomeScreen;

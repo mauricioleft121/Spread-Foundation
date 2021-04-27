@@ -3,22 +3,35 @@
 import { StyleSheet} from 'react-native';
 import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen';
 
+  const PrimaryColor = '#22212c';
+  const SecondaryColor = '#ff5555';
+
 export default StyleSheet.create({
   container: {
     flex: 1,
-    padding: 20,
-    backgroundColor: '#22212c',
+    backgroundColor: PrimaryColor,
     alignItems: 'center',
   },
-  viewpicker: {
-    width: 320,
-    height: 50,
-    borderWidth: 1,
-    borderColor: 'black',
-    borderRadius: 7,
-    backgroundColor: 'white',
+
+  imagemsapataquadrada:{
+    marginTop: hp(4),
+    marginBottom: hp(6),
   },
-  textinput: {
+
+  titulocargapilar:{
+    paddingTop: 40,
+    color:'white',
+    fontFamily: 'DarkerGrotesque-Bold',
+    fontSize: 18,
+  },
+  subtitulocargapilar:{
+    paddingBottom: 10,
+    color:'white',
+    fontFamily: 'DarkerGrotesque-Bold',
+    fontSize: 18,
+  },
+
+  inputcargapilar: {
     width: 320,
     height: 50,
     fontSize: 16,
@@ -27,6 +40,24 @@ export default StyleSheet.create({
     borderRadius: 7,
     backgroundColor: 'white',
   },
+
+  titulos:{
+    paddingTop: 30,
+    paddingBottom: 10,
+    color:'white',
+    fontFamily: 'DarkerGrotesque-Bold',
+    fontSize: 18,
+  },
+
+  viewpicker: {
+    width: 320,
+    height: 50,
+    borderWidth: 1,
+    borderColor: 'black',
+    borderRadius: 7,
+    backgroundColor: 'white',
+  },
+
   botaocalcular:{
     alignItems: 'center',
     justifyContent:'center',
@@ -39,6 +70,11 @@ export default StyleSheet.create({
     marginTop: 50,
     marginLeft: 30,
   },
+
+
+
+
+
   botaoinfo:{
     alignItems: 'center',
     justifyContent:'center',
@@ -50,25 +86,7 @@ export default StyleSheet.create({
     fontFamily: 'DarkerGrotesque-Bold',
     fontSize: 18,
   },
-  textlocation:{
-    paddingTop: 30,
-    paddingBottom: 10,
-    color:'white',
-    fontFamily: 'DarkerGrotesque-Bold',
-    fontSize: 18,
-  },
-  textlocation1:{
-    paddingTop: 70,
-    color:'white',
-    fontFamily: 'DarkerGrotesque-Bold',
-    fontSize: 18,
-  },
-  textlocation2:{
-    paddingBottom: 10,
-    color:'white',
-    fontFamily: 'DarkerGrotesque-Bold',
-    fontSize: 18,
-  },
+
 
   backgroundImage: {
     flex: 1,
@@ -98,7 +116,7 @@ export default StyleSheet.create({
 
   modalView: {
     margin: 20,
-    backgroundColor:'#22212c',
+    backgroundColor: PrimaryColor,
     borderRadius: 20,
     paddingLeft: 20,
     paddingRight:20,
@@ -111,7 +129,7 @@ export default StyleSheet.create({
     shadowOpacity: 0.25,
     shadowRadius: 4,
     borderWidth: 10,
-    borderColor: '#ff5555',
+    borderColor: SecondaryColor,
     height: hp(71),
     width: wp(95),
   },
@@ -186,13 +204,13 @@ export default StyleSheet.create({
     width: wp(96),
     height: hp(35),
     margin: 20,
-    backgroundColor: '#22212c',
+    backgroundColor: PrimaryColor,
     borderRadius: 20,
     paddingLeft: 20,
     paddingRight:20,
      elevation: 5,
      borderWidth: 10,
-     borderColor: '#ff5555',
+     borderColor: SecondaryColor,
   },
   ErroTitle:{
     fontSize:hp(4),
@@ -204,7 +222,7 @@ export default StyleSheet.create({
     fontSize:hp(2.4),
     fontFamily:'DarkerGrotesque-Bold',
    color:'white',
-    backgroundColor: '#ff5555',
+    backgroundColor: SecondaryColor,
     borderRadius:20,
     textAlign:'center',
   },
@@ -249,25 +267,25 @@ export default StyleSheet.create({
     height: hp(96),
     width: wp(96),
     margin: 20,
-    backgroundColor: '#22212c',
+    backgroundColor: PrimaryColor,
     borderRadius: 20,
     paddingLeft: 20,
     paddingRight:20,
      elevation: 5,
      borderWidth: 10,
-     borderColor: '#ff5555',
+     borderColor: SecondaryColor,
    },
    modalViewTensoes:{
     height: hp(85),
     width: wp(96),
     margin: 20,
-    backgroundColor: '#22212c',
+    backgroundColor: PrimaryColor,
     borderRadius: 20,
     paddingLeft: 20,
     paddingRight:20,
      elevation: 5,
      borderWidth: 10,
-     borderColor: '#ff5555',
+     borderColor: SecondaryColor,
    },
    tensoes:{
     paddingTop:10,
@@ -292,7 +310,7 @@ export default StyleSheet.create({
   botaoprosseguir:{
     alignItems: 'center',
     justifyContent:'center',
-    backgroundColor: '#ff5555',
+    backgroundColor: SecondaryColor,
     borderWidth: 0,
     borderColor: 'white',
     height: 50,

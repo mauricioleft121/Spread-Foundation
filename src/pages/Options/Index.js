@@ -9,31 +9,33 @@ const Options = ({ navigation }) => {
   return (
     <>
     <View style={styles.container}>
+
+      {/* LOGO SAPATA*/}
       <Image
       source={require('../../assets/sapata/sapata.png')}
-      style={{marginBottom:50}}/>
+      style={styles.imagemsapata}/>
+
+      {/* BOTÃO SAPATA QUADRADA*/}
     <TouchableOpacity
       onPress={() => navigation.navigate('SapataQuadrada')}
-      style={styles.botaoSapataQuadrada}
-      >
+      style={styles.botaoSapataQuadrada}>
       <Image
       source={require('../../assets/botaosapataquadrada/sapataquadrada.png')}
-      style={styles.ImageIconStyle}
-     />
-      <Text style={styles.textbutton}>Sapata Quadrada</Text>
+      style={styles.imagemnosbotoes}/>
+      <Text style={styles.textonosbotoes}>Sapata Quadrada</Text>
       </TouchableOpacity>
+
+     {/* BOTÃO SAPATA RETANGULAR*/}
       <TouchableOpacity
       onPress={() => navigation.navigate('SapataRetangular')}
-      style={styles.botaoSapataRetangular}
-      >
+      style={styles.botaoSapataRetangular}>
       <Image
       source={require('../../assets/botaosapataretangular/sapataretangular.png')}
-      style={styles.ImageIconStyle}
-     />
-      <Text style={styles.textbutton}>Sapata Retangular</Text>
+      style={styles.imagemnosbotoes} />
+      <Text style={styles.textonosbotoes}>Sapata Retangular</Text>
       </TouchableOpacity>
-    </View>
 
+    </View>
     </>
   );
 };
