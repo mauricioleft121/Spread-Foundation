@@ -2,6 +2,7 @@
 import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
+import { AppearanceProvider, useColorScheme } from 'react-native-appearance';
 
 import HomeScreen from './pages/HomeScreen/Index'; //home
 import Options from './pages/Options/Index'; // opções
@@ -28,6 +29,7 @@ const horizontalAnimation = {
 };
 
 function Routes(navigation) {
+  const schema = useColorScheme();
   return (
     <NavigationContainer>
       <Stack.Navigator>
@@ -46,7 +48,7 @@ function Routes(navigation) {
             ...horizontalAnimation,
             headerTransparent: true,
             headerTitle: null,
-            headerTintColor:'white'
+            headerTintColor:'white',
           }}
         />
           <Stack.Screen
@@ -56,7 +58,7 @@ function Routes(navigation) {
             ...horizontalAnimation,
             headerTransparent: true,
             headerTitle: null,
-            headerTintColor:'white'
+            headerTintColor:'white',
           }}
         />
           <Stack.Screen

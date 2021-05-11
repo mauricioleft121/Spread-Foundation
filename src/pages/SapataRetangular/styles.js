@@ -3,11 +3,14 @@
 import { StyleSheet } from 'react-native';
 import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
 
+const PrimaryColor = '#22212c';
+const SecondaryColor = '#905229';
+
 export default StyleSheet.create({
   container: {
     flex: 1,
     padding: 20,
-    backgroundColor: '#22212c',
+    backgroundColor: PrimaryColor,
     alignItems: 'center',
   },
   viewpicker: {
@@ -52,21 +55,21 @@ export default StyleSheet.create({
     fontSize: 18,
   },
   textlocation: {
-    paddingTop: 20,
+    paddingTop: 15,
     paddingBottom: 10,
     color: 'white',
     fontFamily: 'DarkerGrotesque-Bold',
     fontSize: 18,
   },
   textlocation1: {
-    paddingTop: 40,
-    paddingBottom: 10,
+    paddingTop: 35,
+    paddingBottom: 0,
     color: 'white',
     fontFamily: 'DarkerGrotesque-Bold',
     fontSize: 18,
   },
   textlocation2: {
-    paddingTop: 20,
+    paddingTop: 15,
     paddingBottom: 10,
     color: 'white',
     fontFamily: 'DarkerGrotesque-Bold',
@@ -101,7 +104,7 @@ export default StyleSheet.create({
 
   modalView: {
     margin: 20,
-    backgroundColor: '#22212c',
+    backgroundColor:PrimaryColor,
     borderRadius: 20,
     paddingLeft: 20,
     paddingRight: 20,
@@ -114,9 +117,9 @@ export default StyleSheet.create({
     shadowOpacity: 0.25,
     shadowRadius: 4,
     borderWidth: 10,
-    borderColor: '#ff5555',
-    height: hp(93),
-    width: wp(80),
+    borderColor: SecondaryColor,
+    height: hp(80),
+    width: wp(95),
   },
 
   modalText: {
@@ -176,27 +179,19 @@ export default StyleSheet.create({
     flex: 0,
     paddingTop: 30,
   },
+  viewerro2:{
+    paddingTop: 40,
+  },
   erro: {
     fontSize: hp(2.9),
     fontFamily: 'DarkerGrotesque-Medium',
     color: 'white',
   },
-  modalViewErro: {
-    flex: 0,
-    margin: 20,
-    backgroundColor: '#22212c',
-    borderRadius: 20,
-    paddingLeft: 20,
-    paddingRight: 20,
-    elevation: 5,
-    borderWidth: 10,
-    borderColor: '#ff5555',
-  },
   resultado3: {
     fontSize: hp(2.4),
     fontFamily: 'DarkerGrotesque-Bold',
     color: 'white',
-    backgroundColor: '#ff5555',
+    backgroundColor:SecondaryColor,
     borderRadius: 20,
     textAlign: 'center',
   },
@@ -244,12 +239,85 @@ export default StyleSheet.create({
     height: hp(96),
     width: wp(96),
     margin: 20,
-    backgroundColor: '#22212c',
+    backgroundColor: PrimaryColor,
     borderRadius: 20,
     paddingLeft: 20,
     paddingRight: 20,
     elevation: 5,
     borderWidth: 10,
-    borderColor: '#ff5555',
+    borderColor:SecondaryColor,
   },
+  modalViewErro: {
+    width: wp(96),
+    height: hp(35),
+    margin: 20,
+    backgroundColor: PrimaryColor,
+    borderRadius: 20,
+    paddingLeft: 20,
+    paddingRight:20,
+     elevation: 5,
+     borderWidth: 10,
+     borderColor: SecondaryColor,
+  },
+  ErroTitle:{
+    fontSize:hp(4),
+    fontFamily:'DarkerGrotesque-Bold',
+    color:'white',
+    right: 10,
+  },
+  modalViewTensoes:{
+    height: hp(85),
+    width: wp(96),
+    margin: 20,
+    backgroundColor: PrimaryColor,
+    borderRadius: 20,
+    paddingLeft: 20,
+    paddingRight:20,
+     elevation: 5,
+     borderWidth: 10,
+     borderColor: SecondaryColor,
+   },
+   tensoes:{
+    paddingTop:10,
+    paddingBottom:10,
+    fontSize:hp(4),
+    fontFamily:'DarkerGrotesque-Bold',
+    color:'white',
+  },
+  metodos:{
+    paddingTop:10,
+    paddingBottom:10,
+    fontSize:hp(3),
+    fontFamily:'DarkerGrotesque-Bold',
+    color:'white',
+  },
+  checkboxtext:{
+    fontSize:hp(2.4),
+    fontFamily:'DarkerGrotesque-Bold',
+    color:'white',
+    textAlign:'center',
+  },
+  botaoprosseguir:{
+    alignItems: 'center',
+    justifyContent:'center',
+    backgroundColor: SecondaryColor,
+    borderWidth: 0,
+    borderColor: 'white',
+    height: 50,
+    width: 180,
+    borderRadius: 5,
+  },
+  textoprosseguir:{
+    fontSize:hp(2.7),
+    fontFamily:'DarkerGrotesque-Bold',
+    color:'white',
+    textAlign:'center',
+  },
+  subtitulocargapilar:{
+    paddingBottom: 10,
+    color:'white',
+    fontFamily: 'DarkerGrotesque-Bold',
+    fontSize: 18,
+  },
+
 });

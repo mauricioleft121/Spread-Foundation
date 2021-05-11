@@ -16,7 +16,7 @@ export function TensãoTeixeira1(NSPT) {
  if (NSPT < 5) {
    NSPT = 5;
  }
- var Tensao = ((0.05 + ((1 + 0.4 * Lado) * (NSPT / 100))) * 1000);
+ var Tensao = (0.05 + ((1 + 0.4 * Lado) * (NSPT / 100))) * 1000;
  return Tensao;
  }
 

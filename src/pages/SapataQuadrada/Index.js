@@ -42,6 +42,8 @@ const SapataQuadrada = () => {
     var AdmT = await Funcoes.TensãoTeixeira1(NSPT);
     var AdmT2 = await Funcoes.TensãoTeixeira2(NSPT, null);
     var AdmM = await Funcoes.TensãoMelo(NSPT);
+    AdmT = AdmT.toFixed(2);
+    AdmT2 = AdmT2.toFixed(2);
     setTAdmT(AdmT);
     setTAdmT2(AdmT2);
     setTAdmM(AdmM);
@@ -55,8 +57,9 @@ const SapataQuadrada = () => {
     var AdmT2 = await Funcoes.TensãoTeixeira2(NSPT, null);
     var AdmM = await Funcoes.TensãoMelo(NSPT);
     var Media = await Funcoes.MediaTensões(AdmT, AdmT2, parseFloat(AdmM), T1CheckBox, T2CheckBox, MCheckBox);
-
     setMediaM(Media);
+
+
     Area = (CPilar / Media) * VCPS;
 
     Lado = Math.sqrt(Area);
@@ -64,6 +67,7 @@ const SapataQuadrada = () => {
       Lado = 0.6;
     }
     Lado = Lado.toFixed(2);
+
     if ((Lado * 100) % 5 === 0) {
       TAdmSolo = CPilar / Area / 1000;
       TAdmSolo = TAdmSolo.toFixed(3);
@@ -119,6 +123,7 @@ const SapataQuadrada = () => {
           selectedValue={NSPT}
           onValueChange={(itemValue, itemIndex) =>
             setNSPT(itemValue)}>
+          <Picker.Item label="4" value="4" />
           <Picker.Item label="5" value="5" />
           <Picker.Item label="6" value="6" />
           <Picker.Item label="7" value="7" />
@@ -194,7 +199,7 @@ const SapataQuadrada = () => {
               </View>
               <View style={{ flexDirection: 'row', paddingTop: 50, justifyContent: 'center', marginBottom: 20 }}>
                 <TouchableOpacity
-                  style={{ backgroundColor: '#ff5555', borderRadius: 30, width: 40, height: 40, justifyContent: 'center', alignItems: 'center' }}
+                  style={{ backgroundColor: '#905229', borderRadius: 30, width: 40, height: 40, justifyContent: 'center', alignItems: 'center' }}
                   onPress={() => { setTensoesVisible(!TensoesVisible); }}>
                   <Icon name="close" size={30} color="white" />
                 </TouchableOpacity>
@@ -347,7 +352,7 @@ const SapataQuadrada = () => {
 
               <View style={{ flexDirection: 'row', justifyContent: 'center', paddingTop: 20 }}>
                 <TouchableOpacity
-                  style={{ right: 50, backgroundColor: '#ff5555', borderRadius: 30, width: 40, height: 40, justifyContent: 'center', alignItems: 'center' }}
+                  style={{ right: 50, backgroundColor: '#905229', borderRadius: 30, width: 40, height: 40, justifyContent: 'center', alignItems: 'center' }}
                   onPress={() => {
                     setModalVisible(!modalVisible);
                     setTensoesVisible(!TensoesVisible);
@@ -355,7 +360,7 @@ const SapataQuadrada = () => {
                   <Back name="arrow-back" size={30} color="white" />
                 </TouchableOpacity>
                 <TouchableOpacity
-                  style={{ backgroundColor: '#ff5555', borderRadius: 30, width: 40, height: 40, justifyContent: 'center', alignItems: 'center', marginRight: 30 }}
+                  style={{ backgroundColor: '#905229', borderRadius: 30, width: 40, height: 40, justifyContent: 'center', alignItems: 'center', marginRight: 30 }}
                   onPress={() => {
                     setModalVisible(!modalVisible);
                     setT1CheckBox(false);
@@ -386,7 +391,7 @@ const SapataQuadrada = () => {
               </View>
               <View style={{ flexDirection: 'row', paddingTop: 50, justifyContent: 'center', marginBottom: 20 }}>
                 <TouchableOpacity
-                  style={{ backgroundColor: '#ff5555', borderRadius: 30, width: 40, height: 40, justifyContent: 'center', alignItems: 'center' }}
+                  style={{ backgroundColor: '#905229', borderRadius: 30, width: 40, height: 40, justifyContent: 'center', alignItems: 'center' }}
                   onPress={() => {
                     setModalVisible(!modalVisible);
                     setTensoesVisible(!TensoesVisible);
@@ -444,7 +449,7 @@ const SapataQuadrada = () => {
 
             <View style={{ flexDirection: 'row', paddingTop: 15, justifyContent: 'center', marginBottom: 20 }}>
               <TouchableOpacity
-                style={{ backgroundColor: '#ff5555', borderRadius: 30, width: 40, height: 40, justifyContent: 'center', alignItems: 'center' }}
+                style={{ backgroundColor: '#905229', borderRadius: 30, width: 40, height: 40, justifyContent: 'center', alignItems: 'center' }}
                 onPress={() => {
                   setInformationVisible(!InformationVisible);
                 }}>

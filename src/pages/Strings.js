@@ -59,12 +59,14 @@ export const SapataRetangularPT = {
     Pag2: 'NSPT',
     Pag3: 'CONTABILIZAÇÃO DO PESO DA SAPATA',
     Pag4: 'CALCULAR',
-    Pag5: 'MENOR LADO DO PILAR',
-    Pag6: 'MAIOR LADO DO PILAR',
+    Pag5: 'MENOR LADO DO PILAR (metros)',
+    Pag6: 'MAIOR LADO DO PILAR (metros)',
+    Pag7: 'VALOR CARACTERÍSTICO',
     /////////////////////////////////////////////////
     /*Modal Erro*/
     ModalErro1: 'ERRO',
-    ModalErro2: 'Falha ao calcular os valores, favor preencher todos os campos.',
+    ModalErro2: 'Falha ao calcular, favor preencher todos os campos.',
+    ModalErro3: 'Falha ao calcular a media das tensões, por favor selecione algum método.',
     //////////////////////////////////////////////////
     /*Tensões*/
     ModalTensões1: 'TENSÕES',
@@ -83,7 +85,7 @@ export const SapataRetangularPT = {
     Modal6: 'Tensão de Trabalho',
     Modal7: 'Menor Dimensão da Sapata',
     Modal8: 'Maior Dimensão da Sapata',
-    Modal9: 'Recalque',
+    Modal9: 'Recalque (Décourt - 1992)',
     ModalKPA: ' (kPa)',
     ModalCm: ' cm',
     ModalM: ' m',
