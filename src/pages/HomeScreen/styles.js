@@ -20,7 +20,7 @@ export default StyleSheet.create({
     backgroundColor: 'white',
     borderWidth: 0.5,
     borderColor: 'black',
-    height: hp(15),
+    height: hp(17),
     width: wp(48),
     borderRadius: 5,
     justifyContent:'center',
@@ -33,7 +33,7 @@ export default StyleSheet.create({
   },
 
   imagembotaodimensionamento: {
-    height: hp(10.4),
+    height: hp(12.4),
     width: wp(30),
   },
 

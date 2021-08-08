@@ -27,12 +27,12 @@ export default StyleSheet.create({
 
   imagemnosbotoes: {
     marginTop: hp(1),
-    height: hp(9),
+    height: hp(10.5),
     width: wp(25),
   },
 
   textonosbotoes:{
-    marginTop: hp(1),
+    marginTop: hp(0),
     fontFamily: 'DarkerGrotesque-SemiBold',
     fontSize: hp(2.5),
     color: 'black',

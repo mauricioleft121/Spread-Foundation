@@ -36,7 +36,7 @@ export default StyleSheet.create({
     height: hp(6.39),
     fontSize: hp(2.044467),
     borderColor: 'black',
-    borderWidth: 1,
+    borderWidth: wp(0.24),
     borderRadius: 7,
     backgroundColor: 'white',
   },
@@ -52,10 +52,11 @@ export default StyleSheet.create({
   viewpicker: {
     width: wp(78.24),
     height: hp(6.39),
-    borderWidth: 1,
+    borderWidth: wp(0.24),
     borderColor: 'black',
     borderRadius: 7,
     backgroundColor: 'white',
+    justifyContent: 'center'
   },
 
   botaocalcular:{
@@ -134,7 +135,7 @@ export default StyleSheet.create({
     },
     shadowOpacity: 0.25,
     shadowRadius: 4,
-    borderWidth: 10,
+    borderWidth: wp(2.4),
     borderColor: SecondaryColor,
     height: hp(80),
     width: wp(95),
@@ -159,7 +160,7 @@ export default StyleSheet.create({
     width:wp(34.23),
     height:hp(17.88908765),
     borderRadius: 100,
-    borderWidth:3,
+    borderWidth:wp(0.73),
     borderColor:'rgba(255,255,255,0.9)',
     marginLeft:wp('16%'),
     marginBottom:'10%',
@@ -217,7 +218,7 @@ export default StyleSheet.create({
     paddingLeft: wp(4.89),
     paddingRight:wp(4.89),
      elevation: 5,
-     borderWidth: 10,
+     borderWidth: wp(2.4),
      borderColor: SecondaryColor,
   },
   ErroTitle:{
@@ -283,11 +284,11 @@ export default StyleSheet.create({
     paddingLeft: wp(4.89),
     paddingRight:wp(4.89),
      elevation: 5,
-     borderWidth: 10,
+     borderWidth: wp(2.4),
      borderColor: SecondaryColor,
    },
    modalViewTensoes:{
-    height: hp(85),
+    height: hp(90),
     width: wp(96),
     marginTop:hp(2.55558),
     marginBottom:hp(2.55558),
@@ -298,7 +299,7 @@ export default StyleSheet.create({
     paddingLeft: wp(4.89),
     paddingRight:wp(4.89),
      elevation: 5,
-     borderWidth: 10,
+     borderWidth: wp(2.4),
      borderColor: SecondaryColor,
    },
    tensoes:{
@@ -349,18 +350,19 @@ export default StyleSheet.create({
     paddingLeft: wp(4.89),
     paddingRight:wp(4.89),
     elevation: 5,
-    borderWidth: 10,
+    borderWidth: wp(2.4),
     borderColor: SecondaryColor,
     alignItems: 'center',
   },
   viewpickermodal: {
     width: wp(78.24),
     height: hp(6.39),
-    borderWidth: 1,
+    borderWidth: wp(0.24),
     borderColor: 'black',
     borderRadius: 7,
     backgroundColor: 'white',
     marginTop: hp(2.55558),
+    justifyContent: 'center'
   },
   pickerviewtitle: {
     fontSize:hp(3),

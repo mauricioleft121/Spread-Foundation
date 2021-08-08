@@ -115,8 +115,9 @@ const SapataRetangular = () => {
   }
 
   return (
-    <ScrollView style={styles.container}>
-      <View style={{alignItems: 'center'}}>
+        <ScrollView style={styles.containerScrollView}>
+                <View style={styles.container}>
+
       <Image
         source={require('../../assets/sapataretangular/sapataretangular.png')} />
       <Text style={styles.textlocation1}>{SapataRetangularPT.Pag1}</Text>
@@ -609,9 +610,10 @@ const SapataRetangular = () => {
         </View>
       </Modal>
 
-
       </View>
-    </ScrollView>
+      </ScrollView>
+
+
   );
 };
 export default SapataRetangular;

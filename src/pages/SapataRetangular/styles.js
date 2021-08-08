@@ -14,6 +14,10 @@ export default StyleSheet.create({
     paddingTop:hp(2.55558),
     paddingBottom:hp(2.55558),
     backgroundColor: PrimaryColor,
+    alignItems: 'center'
+  },
+  containerScrollView: {
+    flex: 1,
   },
   viewpicker: {
     width: wp(78.2396),
@@ -22,6 +26,7 @@ export default StyleSheet.create({
     borderColor: 'black',
     borderRadius: 7,
     backgroundColor: 'white',
+    justifyContent: 'center'
   },
   textinput: {
     width: wp(78.2396),
@@ -280,7 +285,7 @@ export default StyleSheet.create({
     right: hp(2.44498),
   },
   modalViewTensoes:{
-    height: hp(85),
+    height: hp(90),
     width: wp(96),
     marginTop: hp(2.55558),
     marginBottom:hp(2.55558),
@@ -360,6 +365,7 @@ export default StyleSheet.create({
     borderRadius: 7,
     backgroundColor: 'white',
     marginTop: hp(2.55558),
+    justifyContent: 'center'
   },
   pickerviewtitle: {
     fontSize:hp(3),
