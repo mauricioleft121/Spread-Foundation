@@ -3,7 +3,7 @@
 
 import 'react-native-gesture-handler';
 import React, { useState } from 'react';
-import {View, Text, TouchableOpacity,  TextInput, Modal, Image, ScrollView} from 'react-native';
+import { View, Text, TouchableOpacity, TextInput, Modal, Image, ScrollView } from 'react-native';
 import { Picker } from '@react-native-picker/picker';
 import { BlurView } from '@react-native-community/blur';
 import styles from './styles';
@@ -13,6 +13,7 @@ import Back from 'react-native-vector-icons/Ionicons';
 import CheckBox from '@react-native-community/checkbox';
 import { Aprox } from '../functions';
 import { SapataQuadradaPT } from '../Strings';
+import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen';
 import * as Funcoes from './Funcoes';
 
 Info.loadFont();
@@ -21,7 +22,7 @@ Back.loadFont();
 
 const SapataQuadrada = () => {
 
-  const [NSPT, setNSPT] = useState(5);
+  const [NSPT, setNSPT] = useState(4);
   const [CPilar, setCPilar] = useState('');
   const [VCPS, setVCPS] = useState(1.05);
   const [TAdmT, setTAdmT] = useState(0);
@@ -34,11 +35,18 @@ const SapataQuadrada = () => {
   const [modalVisible, setModalVisible] = useState(false);
   const [InformationVisible, setInformationVisible] = useState(false);
   const [TensoesVisible, setTensoesVisible] = useState(false);
+  const [resultadoVisible, setResultadoVisible] = useState(false);
   const [T1CheckBox, setT1CheckBox] = useState(false);
   const [T2CheckBox, setT2CheckBox] = useState(false);
   const [MCheckBox, setMCheckBox] = useState(false);
+  const [Posicao, setPosicao] = useState(0);
+  const [Poisson, setPoisson] = useState(0.3);
+  const [Es, setEs] = useState('');
+  const [Df, setDf] = useState('');
+  const [Exp, setExp] = useState('');
+  const [Braja, setBraja] = useState('');
 
- async function CalculoADM() {
+  async function CalculoADM() {
     var AdmT = await Funcoes.TensãoTeixeira1(NSPT);
     var AdmT2 = await Funcoes.TensãoTeixeira2(NSPT, null);
     var AdmM = await Funcoes.TensãoMelo(NSPT);
@@ -78,7 +86,7 @@ const SapataQuadrada = () => {
       Recalq = Recalq.toFixed(2);
       setLadoL(Lado);
       setRecalque(Recalq);
-      setTtrab(TAdmSolo);
+      setTtrab(TAdmSolo * 1000);
     }
     else if ((Lado * 100) % 5 !== 0) {
       Lado = Aprox(Lado);
@@ -91,8 +99,8 @@ const SapataQuadrada = () => {
         (Math.pow(Lado, 0.7) / NSPT);
       Recalq = Recalq.toFixed(2);
       setLadoL(Lado);
-      setRecalque(Recalq);
-      setTtrab(TAdmSolo);
+      setRecalque(Recalq * 10);
+      setTtrab(TAdmSolo * 1000);
     }
     setModalVisible(true);
   }
@@ -100,10 +108,10 @@ const SapataQuadrada = () => {
   return (
     <View style={styles.container}>
 
-         {/* LOGO SAPATA QUADRADA*/}
+      {/* LOGO SAPATA QUADRADA*/}
       <Image
-      style={styles.imagemsapataquadrada}
-      source={require('../../assets/sapataquadrada/sapataquadrada.png')}/>
+        style={styles.imagemsapataquadrada}
+        source={require('../../assets/sapataquadrada/sapataquadrada.png')} />
 
       {/* INPUT CARGA PILAR*/}
       <Text style={styles.titulocargapilar}>{SapataQuadradaPT.Pag1}</Text>
@@ -169,11 +177,11 @@ const SapataQuadrada = () => {
         </TouchableOpacity>
         <TouchableOpacity style={styles.botaoinfo}
           onPress={() => { setInformationVisible(!InformationVisible); }}>
-          <Info name="info" size={30} color="white" />
+          <Info name="info" size={hp(3.83337)} color="white" />
         </TouchableOpacity>
       </View>
 
-      {modalVisible || TensoesVisible || InformationVisible ? <BlurView
+      {modalVisible || TensoesVisible || InformationVisible || resultadoVisible ? <BlurView
         style={styles.absolute}
         blurType="light"
         blurAmount={5}
@@ -182,7 +190,7 @@ const SapataQuadrada = () => {
 
       {/*MODAL TENSÕES*/}
       {CPilar === '' ?
-      // MODAL ERRO //
+        // MODAL ERRO //
         <Modal
           animationType="slide"
           transparent={true}
@@ -197,18 +205,18 @@ const SapataQuadrada = () => {
                 <Text style={styles.erro}>{SapataQuadradaPT.ModalErro2}
                 </Text>
               </View>
-              <View style={{ flexDirection: 'row', paddingTop: 50, justifyContent: 'center', marginBottom: 20 }}>
+              <View style={{ flexDirection: 'row', paddingTop: hp(6.38895), justifyContent: 'center', marginBottom: hp(2.55558) }}>
                 <TouchableOpacity
-                  style={{ backgroundColor: '#905229', borderRadius: 30, width: 40, height: 40, justifyContent: 'center', alignItems: 'center' }}
+                  style={{ backgroundColor: '#905229', borderRadius: 30, width: wp(9.77995), height: hp(5.11116), justifyContent: 'center', alignItems: 'center' }}
                   onPress={() => { setTensoesVisible(!TensoesVisible); }}>
-                  <Icon name="close" size={30} color="white" />
+                  <Icon name="close" size={hp(3.83337)} color="white" />
                 </TouchableOpacity>
               </View>
             </View>
           </View>
         </Modal>
         :
-      // MODAL TENSÃO //
+        // MODAL TENSÃO //
         <Modal
           animationType="slide"
           transparent={true}
@@ -216,14 +224,14 @@ const SapataQuadrada = () => {
           visible={TensoesVisible}>
           <View style={styles.centeredView}>
             <View style={styles.modalViewTensoes}>
-              <View style={{ alignItems: 'center', marginBottom: 10 }}>
+              <View style={{ alignItems: 'center', marginBottom: hp(1.27779) }}>
                 <Text style={styles.tensoes}>{SapataQuadradaPT.ModalTensões1}</Text>
               </View>
 
               <View>
                 <Text style={styles.resultado3}>{SapataQuadradaPT.ModalTensões3}</Text>
                 <View style={{ flexDirection: 'row', alignItems: 'center', marginTop: 2 }}>
-                  <Text style={{ fontWeight: 'bold', bottom: 6, fontSize: 30, color: 'white' }}>• </Text>
+                  <Text style={{ fontWeight: 'bold', bottom: hp(0.76667), fontSize: hp(3.83337), color: 'white' }}>• </Text>
                   <Text style={styles.resultado2}>{TAdmT + SapataQuadradaPT.ModalKPA}</Text>
                 </View>
               </View>
@@ -231,7 +239,7 @@ const SapataQuadrada = () => {
               <View>
                 <Text style={styles.resultado3}>{SapataQuadradaPT.ModalTensões4}</Text>
                 <View style={{ flexDirection: 'row', alignItems: 'center', marginTop: 2 }}>
-                  <Text style={{ fontWeight: 'bold', bottom: 6, fontSize: 30, color: 'white' }}>• </Text>
+                  <Text style={{ fontWeight: 'bold', bottom: hp(0.76667), fontSize: hp(3.83337), color: 'white' }}>• </Text>
                   <Text style={styles.resultado2}>{TAdmT2 + SapataQuadradaPT.ModalKPA}</Text>
                 </View>
               </View>
@@ -239,7 +247,7 @@ const SapataQuadrada = () => {
               <View>
                 <Text style={styles.resultado3}>{SapataQuadradaPT.ModalTensões5}</Text>
                 <View style={{ flexDirection: 'row', alignItems: 'center', marginTop: 2 }}>
-                  <Text style={{ fontWeight: 'bold', bottom: 6, fontSize: 30, color: 'white' }}>• </Text>
+                  <Text style={{ fontWeight: 'bold', bottom: hp(0.76667), fontSize: hp(3.83337), color: 'white' }}>• </Text>
                   <Text style={styles.resultado2}>{TAdmM + SapataQuadradaPT.ModalKPA}</Text>
                 </View>
               </View>
@@ -279,7 +287,8 @@ const SapataQuadrada = () => {
               </View>
 
 
-              <View style={{ flexDirection: 'row', paddingTop: 50, justifyContent: 'center', marginBottom: 20 }}>
+              <View style={{ flexDirection: 'row', paddingTop: hp(6.38895), justifyContent: 'center', marginBottom: hp(2.55558),
+ }}>
                 <TouchableOpacity
                   style={styles.botaoprosseguir}
                   onPress={CalculoSapata}>
@@ -292,14 +301,125 @@ const SapataQuadrada = () => {
       }
 
 
-
-       {/*MODAL RESULTADOS*/}
+      {/*MODAL SAPATA BRAJA*/}
       {T1CheckBox || T2CheckBox || MCheckBox ?
-        // MODAL RESULTADO //
+        // MODAL Input sapata braja //
         <Modal
           animationType="slide"
           transparent={true}
           visible={modalVisible}>
+          <View style={styles.centeredView}>
+            <View style={styles.modalViewPicker}>
+              <Text style={styles.pickerviewtitle}>Posição da Sapata</Text>
+              <View style={styles.viewpickermodal}>
+                <Picker
+                  selectedValue={Posicao}
+                  onValueChange={(itemValue, itemIndex) =>
+                    setPosicao(itemValue)}>
+                  <Picker.Item label="Centro da Fundação" value={0} />
+                  <Picker.Item label="Canto da Fundação" value={1} />
+                </Picker>
+              </View>
+              <Text style={styles.pickerviewtitle}>Coeficiente de Poisson</Text>
+              <View style={styles.viewpickermodal}>
+                <Picker
+                  selectedValue={Poisson}
+                  onValueChange={(itemValue, itemIndex) =>
+                    setPoisson(itemValue)}>
+                  <Picker.Item label="0,3" value={0.3} />
+                  <Picker.Item label="0,4" value={0.4} />
+                  <Picker.Item label="0,5" value={0.5} />
+                </Picker>
+              </View>
+              <Text style={styles.pickerviewtitle}>Valor de Es ( kN/m² )</Text>
+              <View style={styles.viewpickermodal}>
+                <TextInput
+                  style={styles.inputCoeficientes}
+                  placeholder={'Insira o valor de Es'}
+                  keyboardType="number-pad"
+                  value={Es}
+                  onChangeText={(text) => setEs(text)}
+                />
+              </View>
+              <Text style={styles.pickerviewtitle}>Valor de Df ( m )</Text>
+              <View style={styles.viewpickermodal}>
+                <TextInput
+                  style={styles.inputCoeficientes}
+                  placeholder={'Insira o valor de Df'}
+                  keyboardType="number-pad"
+                  value={Df}
+                  onChangeText={(text) => setDf(text)}
+                />
+              </View>
+              <Text style={styles.pickerviewtitle2}>Espessura da Camada Deformavel ( m )</Text>
+              <View style={styles.viewpickermodal}>
+                <TextInput
+                  style={styles.inputCoeficientes}
+                  placeholder={'Insira a expessura da camada deformavel'}
+                  keyboardType="number-pad"
+                  value={Exp}
+                  onChangeText={(text) => setExp(text)}
+                />
+              </View>
+              <View style={{ flexDirection: 'row', justifyContent: 'space-between', paddingTop: hp(5.11), width: wp(48.89975) }}>
+                <TouchableOpacity
+                  style={{ backgroundColor: '#905229', borderRadius: 30, width: wp(9.77995), height: hp(5.11), justifyContent: 'center', alignItems: 'center' }}
+                  onPress={() => {
+                    setModalVisible(!modalVisible);
+                    setTensoesVisible(!TensoesVisible);
+                  }}>
+                  <Back name="arrow-back" size={30} color="white" />
+                </TouchableOpacity>
+
+                <TouchableOpacity
+                  style={{ backgroundColor: '#905229', borderRadius: 10, width: wp(29.33985), height: hp(5.11), justifyContent: 'center', alignItems: 'center', flexDirection: 'row' }}
+                  onPress={() => {
+                    setModalVisible(!modalVisible);
+                    setResultadoVisible(!resultadoVisible);
+                    setBraja((Funcoes.RecalqueBraja(Posicao,LadoL,LadoL,Df,Poisson,Exp,Ttrab,Es).toFixed(3) * 1000));
+                  }}>
+                  <Text style={styles.textoprosseguir}>CALCULAR</Text>
+                </TouchableOpacity>
+              </View>
+            </ View>
+
+          </View>
+        </Modal>
+        :
+        // MODAL ERRO //
+        <Modal
+          animationType="slide"
+          transparent={true}
+          visible={modalVisible}>
+          <View style={styles.centeredView}>
+            <View style={styles.modalViewErro}>
+              <View style={{ alignItems: 'center' }}>
+                <Text style={styles.resultado}>{SapataQuadradaPT.ModalErro1}</Text>
+              </View>
+              <View style={styles.viewerro}>
+                <Text style={styles.erro}>{SapataQuadradaPT.ModalErro3}</Text>
+              </View>
+              <View style={{ flexDirection: 'row', paddingTop: hp(6.38895), justifyContent: 'center', marginBottom: hp(2.55558) }}>
+                <TouchableOpacity
+                  style={{ backgroundColor: '#905229', borderRadius: 30, width: wp(9.77995), height: hp(5.11), justifyContent: 'center', alignItems: 'center' }}
+                  onPress={() => {
+                    setModalVisible(!modalVisible);
+                    setTensoesVisible(!TensoesVisible);
+                  }}>
+                  <Icon name="close" size={hp(3.83337)} color="white" />
+                </TouchableOpacity>
+              </View>
+            </View>
+          </View>
+        </Modal>
+      }
+
+      {/*MODAL RESULTADOS*/}
+      {Posicao !== '' && Es !== '' && Df !== '' && Exp !== '' ?
+        <Modal
+          animationType="slide"
+          transparent={true}
+          visible={resultadoVisible}>
           <View style={styles.centeredView}>
             <View style={styles.modalView}>
 
@@ -311,7 +431,7 @@ const SapataQuadrada = () => {
                 <View>
                   <Text style={styles.resultado3}>{SapataQuadradaPT.Modal2}</Text>
                   <View style={{ flexDirection: 'row', alignItems: 'center' }}>
-                    <Text style={{ fontWeight: 'bold', bottom: 6, fontSize: 30, color: 'white' }}>• </Text>
+                    <Text style={{ fontWeight: 'bold', bottom: hp(0.76667), fontSize: hp(3.83337), color: 'white' }}>• </Text>
                     <Text style={styles.resultado2}>Quadrada</Text>
                   </View>
                 </View>
@@ -319,7 +439,7 @@ const SapataQuadrada = () => {
                 <View>
                   <Text style={styles.resultado3}>{SapataQuadradaPT.Modal5}</Text>
                   <View style={{ flexDirection: 'row', alignItems: 'center' }}>
-                    <Text style={{ fontWeight: 'bold', bottom: 6, fontSize: 30, color: 'white' }}>• </Text>
+                    <Text style={{ fontWeight: 'bold', bottom: hp(0.76667), fontSize: hp(3.83337), color: 'white' }}>• </Text>
                     <Text style={styles.resultado2}>{MediaM + SapataQuadradaPT.ModalKPA}</Text>
                   </View>
                 </View>
@@ -327,15 +447,15 @@ const SapataQuadrada = () => {
                 <View>
                   <Text style={styles.resultado3}>{SapataQuadradaPT.Modal6}</Text>
                   <View style={{ flexDirection: 'row', alignItems: 'center' }}>
-                    <Text style={{ fontWeight: 'bold', bottom: 6, fontSize: 30, color: 'white' }}>• </Text>
-                    <Text style={styles.resultado2}>{Ttrab + SapataQuadradaPT.ModalMPA}</Text>
+                    <Text style={{ fontWeight: 'bold', bottom: hp(0.76667), fontSize: hp(3.83337), color: 'white' }}>• </Text>
+                    <Text style={styles.resultado2}>{Ttrab + SapataQuadradaPT.ModalKPA}</Text>
                   </View>
                 </View>
 
                 <View>
                   <Text style={styles.resultado3}>{SapataQuadradaPT.Modal7}</Text>
                   <View style={{ flexDirection: 'row', alignItems: 'center' }}>
-                    <Text style={{ fontWeight: 'bold', bottom: 6, fontSize: 30, color: 'white' }}>• </Text>
+                    <Text style={{ fontWeight: 'bold', bottom: hp(0.76667), fontSize: hp(3.83337), color: 'white' }}>• </Text>
                     <Text style={styles.resultado2}>{LadoL + SapataQuadradaPT.ModalM}</Text>
                   </View>
                 </View>
@@ -343,31 +463,40 @@ const SapataQuadrada = () => {
                 <View>
                   <Text style={styles.resultado3}>{SapataQuadradaPT.Modal8}</Text>
                   <View style={{ flexDirection: 'row', alignItems: 'center' }}>
-                    <Text style={{ fontWeight: 'bold', bottom: 6, fontSize: 30, color: 'white' }}>• </Text>
+                    <Text style={{ fontWeight: 'bold', bottom: hp(0.76667), fontSize: hp(3.83337), color: 'white' }}>• </Text>
                     <Text style={styles.resultado2}>{Recalque + SapataQuadradaPT.ModalCm}</Text>
+                  </View>
+
+                </View>
+
+                <View>
+                  <Text style={styles.resultado3}>{SapataQuadradaPT.Modal9}</Text>
+                  <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+                    <Text style={{ fontWeight: 'bold', bottom: hp(0.76667), fontSize: hp(3.83337), color: 'white' }}>• </Text>
+                    <Text style={styles.resultado2}>{Braja + SapataQuadradaPT.ModalCm}</Text>
                   </View>
 
                 </View>
               </View>
 
-              <View style={{ flexDirection: 'row', justifyContent: 'center', paddingTop: 20 }}>
+              <View style={{ flexDirection: 'row', justifyContent: 'center', paddingTop: hp(2.55558) }}>
                 <TouchableOpacity
-                  style={{ right: 50, backgroundColor: '#905229', borderRadius: 30, width: 40, height: 40, justifyContent: 'center', alignItems: 'center' }}
+                  style={{ right: wp(12.22493), backgroundColor: '#905229', borderRadius: 30, width: wp(9.77995), height: hp(5.11), justifyContent: 'center', alignItems: 'center' }}
                   onPress={() => {
                     setModalVisible(!modalVisible);
-                    setTensoesVisible(!TensoesVisible);
+                    setResultadoVisible(!resultadoVisible);
                   }}>
                   <Back name="arrow-back" size={30} color="white" />
                 </TouchableOpacity>
                 <TouchableOpacity
-                  style={{ backgroundColor: '#905229', borderRadius: 30, width: 40, height: 40, justifyContent: 'center', alignItems: 'center', marginRight: 30 }}
+                  style={{ backgroundColor: '#905229', borderRadius: 30, width: wp(9.77995), height: hp(5.11), justifyContent: 'center', alignItems: 'center', marginRight: wp(7.33496) }}
                   onPress={() => {
-                    setModalVisible(!modalVisible);
+                    setResultadoVisible(!resultadoVisible);
                     setT1CheckBox(false);
                     setT2CheckBox(false);
                     setMCheckBox(false);
                   }}>
-                  <Icon name="close" size={30} color="white" />
+                  <Icon name="close" size={hp(3.83337)} color="white" />
                 </TouchableOpacity>
               </View>
 
@@ -375,11 +504,10 @@ const SapataQuadrada = () => {
           </View>
         </Modal>
         :
-       // MODAL ERRO //
         <Modal
           animationType="slide"
           transparent={true}
-          visible={modalVisible}>
+          visible={resultadoVisible}>
           <View style={styles.centeredView}>
             <View style={styles.modalViewErro}>
               <View style={{ alignItems: 'center' }}>
@@ -389,14 +517,14 @@ const SapataQuadrada = () => {
                 <Text style={styles.erro}>{SapataQuadradaPT.ModalErro3}
                 </Text>
               </View>
-              <View style={{ flexDirection: 'row', paddingTop: 50, justifyContent: 'center', marginBottom: 20 }}>
+              <View style={{ flexDirection: 'row', paddingTop: hp(6.38895), justifyContent: 'center', marginBottom: hp(2.55558) }}>
                 <TouchableOpacity
-                  style={{ backgroundColor: '#905229', borderRadius: 30, width: 40, height: 40, justifyContent: 'center', alignItems: 'center' }}
+                  style={{ backgroundColor: '#905229', borderRadius: 30, width: wp(9.77995), height: hp(5.11), justifyContent: 'center', alignItems: 'center' }}
                   onPress={() => {
+                    setResultadoVisible(!resultadoVisible);
                     setModalVisible(!modalVisible);
-                    setTensoesVisible(!TensoesVisible);
                   }}>
-                  <Icon name="close" size={30} color="white" />
+                  <Icon name="close" size={hp(3.83337)} color="white" />
                 </TouchableOpacity>
               </View>
             </View>
@@ -415,7 +543,7 @@ const SapataQuadrada = () => {
           <View style={styles.modalViewInfo}>
 
             <ScrollView
-              style={{ marginTop: 15 }}
+              style={{ marginTop: hp(1.91668) }}
               showsVerticalScrollIndicator={false}>
               <View style={styles.viewInfo}>
 
@@ -423,19 +551,19 @@ const SapataQuadrada = () => {
                 <Text style={styles.textInfo2}>{SapataQuadradaPT.Info3}</Text>
                 <Image
                   source={require('../../assets/info/info1.png')}
-                  style={{ width: 280, height: 90, resizeMode: 'contain' }} />
+                  style={{ width: wp(68.4596577), height: hp(11.50012778), resizeMode: 'contain' }} />
                 <Text style={styles.textInfo3}>{SapataQuadradaPT.Info4}</Text>
                 <Text style={styles.textInfo3}>{SapataQuadradaPT.InfoEspaço}</Text>
                 <Image
                   source={require('../../assets/info/info3.png')}
-                  style={{ width: 280, height: 90, resizeMode: 'contain', right: 20, marginTop: 10, marginBottom: 10 }} />
+                  style={{ width: wp(68.4596577), height: hp(11.50012778), resizeMode: 'contain', right: 20, marginTop: 10, marginBottom: 10 }} />
                 <Text style={styles.textInfo2}>{SapataQuadradaPT.Info5}</Text>
                 <Text style={styles.textInfo3}>{SapataQuadradaPT.Info6}</Text>
                 <Text style={styles.textInfo3}>{SapataQuadradaPT.InfoEspaço}</Text>
                 <Text style={styles.textInfo4}>{SapataQuadradaPT.Info7}</Text>
                 <Image
                   source={require('../../assets/info/info2.png')}
-                  style={{ width: 280, height: 70, resizeMode: 'contain' }} />
+                  style={{ width: wp(68.4596577), height: hp(8.944544), resizeMode: 'contain' }} />
                 <Text style={styles.textInfo3}>{SapataQuadradaPT.Info8}</Text>
                 <Text style={styles.textInfo3}>{SapataQuadradaPT.InfoEspaço}</Text>
                 <Text style={styles.textInfo3}>{SapataQuadradaPT.Info9}</Text>
@@ -447,13 +575,13 @@ const SapataQuadrada = () => {
 
             </ScrollView>
 
-            <View style={{ flexDirection: 'row', paddingTop: 15, justifyContent: 'center', marginBottom: 20 }}>
+            <View style={{ flexDirection: 'row', paddingTop: hp(1.91668), justifyContent: 'center', marginBottom: hp(2.55558) }}>
               <TouchableOpacity
-                style={{ backgroundColor: '#905229', borderRadius: 30, width: 40, height: 40, justifyContent: 'center', alignItems: 'center' }}
+                style={{ backgroundColor: '#905229', borderRadius: 30, width: wp(9.77995), height: hp(5.11), justifyContent: 'center', alignItems: 'center' }}
                 onPress={() => {
                   setInformationVisible(!InformationVisible);
                 }}>
-                <Icon name="close" size={30} color="white" />
+                <Icon name="close" size={hp(3.8333)} color="white" />
               </TouchableOpacity>
             </View>
           </View>
