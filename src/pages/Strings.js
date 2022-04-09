@@ -52,6 +52,7 @@ export const SapataQuadradaPT = {
   Info11: 'MELLO (1975). Tensão admissível. In: CINTRA, J.C.A.; AOKI, N.; ALBIERO, J. H.; (2003). Tensão admissível em fundações diretas. São Carlos: RiMa, Cap 4, p.67-78.',
   Info12: 'José Carlos A. Cintra, Nelson Aoki, José Henrique Albiero. Fundações diretas. . 1. epub. http://oficina.ipublishcentral.com/',
   InfoEspaço: '__________________________________',
+  Info13: 'Braja, M. D. 2019. Recalques elásticos de fundações rígidas e flexives – Fundação Rígida',
 };
 
 export const SapataRetangularPT = {
@@ -110,6 +111,7 @@ export const SapataRetangularPT = {
     Info11: 'MELLO (1975). Tensão admissível. In: CINTRA, J.C.A.; AOKI, N.; ALBIERO, J. H.; (2003). Tensão admissível em fundações diretas. São Carlos: RiMa, Cap 4, p.67-78.',
     Info12: 'José Carlos A. Cintra, Nelson Aoki, José Henrique Albiero. Fundações diretas. . 1. epub. http://oficina.ipublishcentral.com/',
     InfoEspaço: '__________________________________',
+    Info13: 'Braja, M. D. 2019. Recalques elásticos de fundações rígidas e flexives – Fundação Rígida',
 
 
 };

@@ -18,6 +18,7 @@ import CheckBox from '@react-native-community/checkbox';
 import Icon from 'react-native-vector-icons/AntDesign';
 import Info from 'react-native-vector-icons/Octicons';
 import Back from 'react-native-vector-icons/Ionicons';
+import IMAGESVG from '../../assets/info/ImagemSapataInfo.svg';
 
 
 import styles from './styles';
@@ -114,6 +115,22 @@ const SapataRetangular = () => {
     setModalVisible(true);
   }
 
+  function cleanFields() {
+    setT1CheckBox(false);
+    setT2CheckBox(false);
+    setMCheckBox(false);
+    setDf('');
+    setEs('');
+    setExp('');
+    setCPilar('');
+    setVCPS(1.05);
+    setNSPT(4);
+    setLadoL('');
+    setLadoB('');
+    setPoisson(0.3);
+    setPosicao(0);
+  }
+
   return (
         <ScrollView style={styles.containerScrollView}>
                 <View style={styles.container}>
@@ -127,7 +144,7 @@ const SapataRetangular = () => {
         placeholder={'Insira o valor da carga do pilar'}
         keyboardType="number-pad"
         value={CPilar}
-        onChangeText={(text) => setCPilar(text)}
+        onChangeText={(text) => setCPilar(text.replace(',', '.'))}
       />
       <Text style={styles.textlocation2}>{SapataRetangularPT.Pag5}</Text>
       <TextInput
@@ -135,7 +152,7 @@ const SapataRetangular = () => {
         placeholder={'Insira o valor do menor lado do pilar'}
         keyboardType="number-pad"
         value={LadoB}
-        onChangeText={(text) => setLadoB(text)}
+        onChangeText={(text) => setLadoB(text.replace(',', '.'))}
       />
       <Text style={styles.textlocation2}>{SapataRetangularPT.Pag6}</Text>
       <TextInput
@@ -143,7 +160,7 @@ const SapataRetangular = () => {
         placeholder={'Insira o valor do maior lado do pilar'}
         keyboardType="number-pad"
         value={LadoL}
-        onChangeText={(text) => setLadoL(text)}
+        onChangeText={(text) => setLadoL(text.replace(',', '.'))}
       />
       <Text style={styles.textlocation}>{SapataRetangularPT.Pag2}</Text>
       <View style={styles.viewpicker}>
@@ -204,7 +221,6 @@ const SapataRetangular = () => {
       /> : null}
 
       {CPilar === '' || LadoL === '' || LadoB === '' ?
-        // MODAL ERRO //
         // MODAL ERRO //
         <Modal
           animationType="slide"
@@ -319,7 +335,6 @@ const SapataRetangular = () => {
       {/*MODAL SAPATA BRAJA*/}
       {T1CheckBox || T2CheckBox || MCheckBox ?
         // MODAL Input sapata braja //
-        // MODAL Input sapata braja //
         <Modal
           animationType="slide"
           transparent={true}
@@ -354,7 +369,7 @@ const SapataRetangular = () => {
                   placeholder={'Insira o valor de Es'}
                   keyboardType="number-pad"
                   value={Es}
-                  onChangeText={(text) => setEs(text)}
+                  onChangeText={(text) => setEs(text.replace(',', '.'))}
                 />
               </View>
               <Text style={styles.pickerviewtitle}>Valor de Df ( m )</Text>
@@ -364,7 +379,7 @@ const SapataRetangular = () => {
                   placeholder={'Insira o valor de Df'}
                   keyboardType="number-pad"
                   value={Df}
-                  onChangeText={(text) => setDf(text)}
+                  onChangeText={(text) => setDf(text.replace(',', '.'))}
                 />
               </View>
               <Text style={styles.pickerviewtitle2}>Espessura da Camada Deformavel ( m )</Text>
@@ -374,7 +389,7 @@ const SapataRetangular = () => {
                   placeholder={'Insira a expessura da camada deformavel'}
                   keyboardType="number-pad"
                   value={Exp}
-                  onChangeText={(text) => setExp(text)}
+                  onChangeText={(text) => setExp(text.replace(',', '.'))}
                 />
               </View>
               <View style={{ flexDirection: 'row', justifyContent: 'space-between', paddingTop: hp(5.11), width: wp(48.89975) }}>
@@ -485,15 +500,6 @@ const SapataRetangular = () => {
                 </View>
 
                 <View>
-                  <Text style={styles.resultado3}>{SapataRetangularPT.Modal8}</Text>
-                  <View style={{ flexDirection: 'row', alignItems: 'center' }}>
-                    <Text style={{ fontWeight: 'bold', bottom: hp(0.76667), fontSize: hp(3.83337), color: 'white' }}>• </Text>
-                    <Text style={styles.resultado2}>{Recalque + SapataRetangularPT.ModalCm}</Text>
-                  </View>
-
-                </View>
-
-                <View>
                   <Text style={styles.resultado3}>{SapataRetangularPT.Modal9}</Text>
                   <View style={{ flexDirection: 'row', alignItems: 'center' }}>
                     <Text style={{ fontWeight: 'bold', bottom: hp(0.76667), fontSize: hp(3.83337), color: 'white' }}>• </Text>
@@ -516,9 +522,7 @@ const SapataRetangular = () => {
                   style={{ backgroundColor: '#905229', borderRadius: 30, width: wp(9.77995), height: hp(5.11), justifyContent: 'center', alignItems: 'center', marginRight: wp(7.33496) }}
                   onPress={() => {
                     setResultadoVisible(!resultadoVisible);
-                    setT1CheckBox(false);
-                    setT2CheckBox(false);
-                    setMCheckBox(false);
+                    cleanFields();
                   }}>
                   <Icon name="close" size={hp(3.83337)} color="white" />
                 </TouchableOpacity>
@@ -588,10 +592,13 @@ const SapataRetangular = () => {
                   style={{ width: wp(68.4596577), height: hp(8.944544), resizeMode: 'contain' }} />
                 <Text style={styles.textInfo3}>{SapataRetangularPT.Info8}</Text>
                 <Text style={styles.textInfo3}>{SapataRetangularPT.InfoEspaço}</Text>
+                <IMAGESVG style={{alignSelf: 'center'}}/>
+                <Text style={styles.textInfo3}>{SapataRetangularPT.InfoEspaço}</Text>
                 <Text style={styles.textInfo3}>{SapataRetangularPT.Info9}</Text>
                 <Text style={styles.textInfo5}>{SapataRetangularPT.Info10}</Text>
                 <Text style={styles.textInfo5}>{SapataRetangularPT.Info11}</Text>
                 <Text style={styles.textInfo5}>{SapataRetangularPT.Info12}</Text>
+                <Text style={styles.textInfo5}>{SapataRetangularPT.Info13}</Text>
 
               </View>
 

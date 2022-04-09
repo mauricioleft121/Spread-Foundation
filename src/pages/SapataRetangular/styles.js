@@ -12,12 +12,13 @@ export default StyleSheet.create({
     paddingLeft: wp(4.889975),
     paddingRight:wp(4.889975),
     paddingTop:hp(2.55558),
-    paddingBottom:hp(2.55558),
+    paddingBottom:hp(5),
     backgroundColor: PrimaryColor,
-    alignItems: 'center'
+    alignItems: 'center',
   },
   containerScrollView: {
     flex: 1,
+    backgroundColor: PrimaryColor,
   },
   viewpicker: {
     width: wp(78.2396),
@@ -26,7 +27,7 @@ export default StyleSheet.create({
     borderColor: 'black',
     borderRadius: 7,
     backgroundColor: 'white',
-    justifyContent: 'center'
+    justifyContent: 'center',
   },
   textinput: {
     width: wp(78.2396),
@@ -131,7 +132,7 @@ export default StyleSheet.create({
     shadowRadius: 4,
     borderWidth: 10,
     borderColor: SecondaryColor,
-    height: hp(89),
+    height: hp(80),
     width: wp(95),
   },
 
@@ -365,7 +366,7 @@ export default StyleSheet.create({
     borderRadius: 7,
     backgroundColor: 'white',
     marginTop: hp(2.55558),
-    justifyContent: 'center'
+    justifyContent: 'center',
   },
   pickerviewtitle: {
     fontSize:hp(3),

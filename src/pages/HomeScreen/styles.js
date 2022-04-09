@@ -1,6 +1,8 @@
 /* eslint-disable prettier/prettier */
 import {StyleSheet} from 'react-native';
 import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen';
+//7,826 = 1hp
+//4.09 = 1wp
 
 export default StyleSheet.create({
   container: {
@@ -35,6 +37,7 @@ export default StyleSheet.create({
   imagembotaodimensionamento: {
     height: hp(12.4),
     width: wp(30),
+    resizeMode: 'contain',
   },
 
   ufsjlogo:{
@@ -42,4 +45,23 @@ export default StyleSheet.create({
     bottom: hp(3.7),
     resizeMode: 'contain',
   },
+
+  buttonformulario: {
+    flexDirection: 'row',
+    backgroundColor: 'white',
+    position: 'absolute',
+    bottom: hp(20),
+    width: wp(48),
+    height: hp(6),
+    alignItems: 'center',
+    justifyContent: 'center',
+    borderRadius: 5,
+  },
+
+  textformulario: {
+    fontFamily: 'DarkerGrotesque-SemiBold',
+    fontSize: hp(1.8),
+    fontWeight: 'bold',
+    marginLeft: 5,
+  }
 });

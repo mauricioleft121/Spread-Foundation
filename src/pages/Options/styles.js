@@ -29,6 +29,7 @@ export default StyleSheet.create({
     marginTop: hp(1),
     height: hp(10.5),
     width: wp(25),
+    resizeMode: 'contain',
   },
 
   textonosbotoes:{
@@ -49,6 +50,5 @@ export default StyleSheet.create({
     justifyContent:'center',
     marginTop: hp(2.5),
   },
-
 
 });

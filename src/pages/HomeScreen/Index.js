@@ -1,13 +1,39 @@
 /* eslint-disable prettier/prettier */
 import 'react-native-gesture-handler';
-import React from 'react';
+import React, {useEffect, useCallback} from 'react';
 import {
-  View, Text, TouchableOpacity, Image,
+  View, Text, TouchableOpacity, Image,Alert, Linking, Button
 } from 'react-native';
+import Form from 'react-native-vector-icons/AntDesign';
 
 import styles from './styles';
 
+Form.loadFont();
+
+const URL = 'https://docs.google.com/forms/d/e/1FAIpQLSe5SXQqPV1gmX5nPjQyHG81DIogOxv2qVNB-mGrmfY-02bmuA/viewform';
+
 const HomeScreen = ({ navigation }) => {
+
+  const OpenURL = () => {
+    Linking.openURL(URL).catch(err => console.error("Couldn't load page", err));
+  }
+
+  useEffect(() => {
+    const Develop = () => {
+      Alert.alert('Aplicativo em fase de Teste.', 'Em caso de algum erro, favor relatar no formulário disponibilizado.'
+      ,[
+        {
+          text: 'Ok',
+          style: 'default',
+        }
+      ],
+      {
+        cancelable: true
+      })
+    }
+    setTimeout(Develop,800)
+  },[])
+
   return (
     <>
       <View  style={styles.container}>
@@ -40,7 +66,10 @@ const HomeScreen = ({ navigation }) => {
           </TouchableOpacity>
         </View>
       */}
-
+        <TouchableOpacity style={styles.buttonformulario} onPress={() => OpenURL()}>
+          <Form name='form' size={20}/>
+          <Text style={styles.textformulario}>FORMULÁRIO FEEDBACK</Text>
+        </TouchableOpacity>
         {/* LOGO UFSJ*/}
         <Image
           style={styles.ufsjlogo}

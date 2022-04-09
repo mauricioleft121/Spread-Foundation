@@ -15,6 +15,7 @@ import { Aprox } from '../functions';
 import { SapataQuadradaPT } from '../Strings';
 import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen';
 import * as Funcoes from './Funcoes';
+import IMAGESVG from '../../assets/info/ImagemSapataInfo.svg';
 
 Info.loadFont();
 Icon.loadFont();
@@ -105,6 +106,20 @@ const SapataQuadrada = () => {
     setModalVisible(true);
   }
 
+  function cleanFields() {
+    setT1CheckBox(false);
+    setT2CheckBox(false);
+    setMCheckBox(false);
+    setDf('');
+    setEs('');
+    setExp('');
+    setCPilar('');
+    setVCPS(1.05);
+    setNSPT(4);
+    setPoisson(0.3);
+    setPosicao(0);
+  }
+
   return (
     <View style={styles.container}>
 
@@ -121,7 +136,7 @@ const SapataQuadrada = () => {
         placeholder={'Insira o valor da carga do pilar'}
         keyboardType="number-pad"
         value={CPilar}
-        onChangeText={(text) => setCPilar(text)}
+        onChangeText={(text) => setCPilar(text.replace(',', '.'))}
       />
 
       {/* PICKER DO NSPT*/}
@@ -338,7 +353,7 @@ const SapataQuadrada = () => {
                   placeholder={'Insira o valor de Es'}
                   keyboardType="number-pad"
                   value={Es}
-                  onChangeText={(text) => setEs(text)}
+                  onChangeText={(text) => setEs(text.replace(',', '.'))}
                 />
               </View>
               <Text style={styles.pickerviewtitle}>Valor de Df ( m )</Text>
@@ -348,7 +363,7 @@ const SapataQuadrada = () => {
                   placeholder={'Insira o valor de Df'}
                   keyboardType="number-pad"
                   value={Df}
-                  onChangeText={(text) => setDf(text)}
+                  onChangeText={(text) => setDf(text.replace(',', '.'))}
                 />
               </View>
               <Text style={styles.pickerviewtitle2}>Espessura da Camada Deformavel ( m )</Text>
@@ -358,7 +373,7 @@ const SapataQuadrada = () => {
                   placeholder={'Insira a expessura da camada deformavel'}
                   keyboardType="number-pad"
                   value={Exp}
-                  onChangeText={(text) => setExp(text)}
+                  onChangeText={(text) => setExp(text.replace(',', '.'))}
                 />
               </View>
               <View style={{ flexDirection: 'row', justifyContent: 'space-between', paddingTop: hp(5.11), width: wp(48.89975) }}>
@@ -461,15 +476,6 @@ const SapataQuadrada = () => {
                 </View>
 
                 <View>
-                  <Text style={styles.resultado3}>{SapataQuadradaPT.Modal8}</Text>
-                  <View style={{ flexDirection: 'row', alignItems: 'center' }}>
-                    <Text style={{ fontWeight: 'bold', bottom: hp(0.76667), fontSize: hp(3.83337), color: 'white' }}>• </Text>
-                    <Text style={styles.resultado2}>{Recalque + SapataQuadradaPT.ModalCm}</Text>
-                  </View>
-
-                </View>
-
-                <View>
                   <Text style={styles.resultado3}>{SapataQuadradaPT.Modal9}</Text>
                   <View style={{ flexDirection: 'row', alignItems: 'center' }}>
                     <Text style={{ fontWeight: 'bold', bottom: hp(0.76667), fontSize: hp(3.83337), color: 'white' }}>• </Text>
@@ -492,9 +498,7 @@ const SapataQuadrada = () => {
                   style={{ backgroundColor: '#905229', borderRadius: 30, width: wp(9.77995), height: hp(5.11), justifyContent: 'center', alignItems: 'center', marginRight: wp(7.33496) }}
                   onPress={() => {
                     setResultadoVisible(!resultadoVisible);
-                    setT1CheckBox(false);
-                    setT2CheckBox(false);
-                    setMCheckBox(false);
+                    cleanFields();
                   }}>
                   <Icon name="close" size={hp(3.83337)} color="white" />
                 </TouchableOpacity>
@@ -566,10 +570,14 @@ const SapataQuadrada = () => {
                   style={{ width: wp(68.4596577), height: hp(8.944544), resizeMode: 'contain' }} />
                 <Text style={styles.textInfo3}>{SapataQuadradaPT.Info8}</Text>
                 <Text style={styles.textInfo3}>{SapataQuadradaPT.InfoEspaço}</Text>
+                <IMAGESVG style={{alignSelf: 'center'}}/>
+                <Text style={styles.textInfo3}>{SapataQuadradaPT.InfoEspaço}</Text>
                 <Text style={styles.textInfo3}>{SapataQuadradaPT.Info9}</Text>
                 <Text style={styles.textInfo5}>{SapataQuadradaPT.Info10}</Text>
                 <Text style={styles.textInfo5}>{SapataQuadradaPT.Info11}</Text>
                 <Text style={styles.textInfo5}>{SapataQuadradaPT.Info12}</Text>
+                <Text style={styles.textInfo5}>{SapataQuadradaPT.Info13}</Text>
+
 
               </View>
 

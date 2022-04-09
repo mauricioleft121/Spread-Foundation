@@ -1,35 +1,19 @@
 /* eslint-disable prettier/prettier */
 import React from 'react';
+import { LogBox } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
-import { createStackNavigator } from '@react-navigation/stack';
-import { AppearanceProvider, useColorScheme } from 'react-native-appearance';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
 import HomeScreen from './pages/HomeScreen/Index'; //home
 import Options from './pages/Options/Index'; // opções
 import SapataQuadrada from './pages/SapataQuadrada/Index'; // SapataQuadrada
 import SapataRetangular from './pages/SapataRetangular/Index'; // Sapata Retangular
 
-const Stack = createStackNavigator();
+const Stack = createNativeStackNavigator();
+LogBox.ignoreAllLogs();
 
-const horizontalAnimation = {
-  cardStyleInterpolator: ({ current, layouts }) => {
-    return {
-      cardStyle: {
-        transform: [
-          {
-            translateX: current.progress.interpolate({
-              inputRange: [0, 1],
-              outputRange: [layouts.screen.width, 0],
-            }),
-          },
-        ],
-      },
-    };
-  },
-};
 
 function Routes(navigation) {
-  const schema = useColorScheme();
   return (
     <NavigationContainer>
       <Stack.Navigator>
@@ -37,17 +21,17 @@ function Routes(navigation) {
           name="HomeScreen"
           component={HomeScreen}
           options={{
+            animation: 'slide_from_right',
             headerShown: false,
-            ...horizontalAnimation,
           }}
         />
         <Stack.Screen
           name="Options"
           component={Options}
           options={{
-            ...horizontalAnimation,
+            animation: 'slide_from_right',
             headerTransparent: true,
-            headerTitle: null,
+            headerTitle: '',
             headerTintColor:'white',
           }}
         />
@@ -55,9 +39,9 @@ function Routes(navigation) {
           name="SapataQuadrada"
           component={SapataQuadrada}
           options={{
-            ...horizontalAnimation,
+            animation: 'slide_from_right',
             headerTransparent: true,
-            headerTitle: null,
+            headerTitle: '',
             headerTintColor:'white',
           }}
         />
@@ -65,9 +49,9 @@ function Routes(navigation) {
           name="SapataRetangular"
           component={SapataRetangular}
           options={{
-            ...horizontalAnimation,
+            animation: 'slide_from_right',
             headerTransparent: true,
-            headerTitle: null,
+            headerTitle: '',
             headerTintColor:'white',
           }}
         />

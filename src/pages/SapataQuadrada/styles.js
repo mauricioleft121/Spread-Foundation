@@ -137,7 +137,7 @@ export default StyleSheet.create({
     shadowRadius: 4,
     borderWidth: wp(2.4),
     borderColor: SecondaryColor,
-    height: hp(80),
+    height: hp(72),
     width: wp(95),
   },
 
